@@ -248,21 +248,21 @@ function HomeContent({ categories, mindBooks }: HomeContentProps) {
                   className="group"
                 >
                   <Card className="hover-lift border border-gray-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-700 h-full">
-                    <CardContent className="flex items-center gap-4 p-5">
+                    <CardContent className="flex items-center gap-3 p-4 sm:gap-4 sm:p-5">
                       <div
-                        className={`rounded-xl ${style.iconBg} p-3 group-hover:scale-110 transition-transform`}
+                        className={`rounded-xl ${style.iconBg} p-2.5 sm:p-3 shrink-0 group-hover:scale-110 transition-transform`}
                       >
-                        <Icon className={`h-5 w-5 ${style.iconColor}`} />
+                        <Icon className={`h-4 w-4 sm:h-5 sm:w-5 ${style.iconColor}`} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-base group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors truncate">
+                        <h3 className="font-semibold text-sm sm:text-base group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors truncate">
                           {category.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-xs sm:text-sm text-muted-foreground truncate">
                           {category.count.toLocaleString()} resources
                         </p>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+                      <div className="hidden sm:flex w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
                         <ArrowRight className="h-4 w-4 text-orange-500" />
                       </div>
                     </CardContent>
