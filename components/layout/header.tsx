@@ -2,6 +2,12 @@
 
 // import { UserMenu } from "@/components/auth/user-menu";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Link, usePathname } from "@/lib/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { BookOpen, Mail, Menu, Sparkles, X } from "lucide-react";
@@ -94,18 +100,26 @@ export function Header() {
           <ThemeToggle />
           <LanguageSwitcher />
           {/* Feedback Email Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={copyEmail}
-            className="hidden sm:flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
-            title={t("feedback.tooltip")}
-          >
-            <Mail className="h-4 w-4" />
-            <span className="hidden lg:inline">
-              {copied ? t("feedback.copied") : t("feedback.label")}
-            </span>
-          </Button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={copyEmail}
+                  className="hidden sm:flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+                >
+                  <Mail className="h-4 w-4" />
+                  <span className="hidden lg:inline">
+                    {copied ? t("feedback.copied") : t("feedback.label")}
+                  </span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="bottom" className="max-w-[200px] text-center">
+                <p>{t("feedback.tooltip")}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           {/* <div className="hidden sm:block">
             <UserMenu />
           </div> */}
