@@ -1,0 +1,119 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "search": "Buscar",
+    "searchPlaceholder": "Buscar libros, autores, temas...",
+    "allCategories": "Todas las categorías",
+    "allLanguages": "Todos los idiomas",
+    "noResults": "No se encontraron resultados",
+    "showMore": "Mostrar más",
+    "showLess": "Mostrar menos"
+  },
+  "nav": {
+    "home": "Inicio",
+    "books": "Libros",
+    "categories": "Categorías",
+    "mindBooks": "Mind Books",
+    "bookmarks": "Mis marcadores",
+    "signIn": "Iniciar sesión",
+    "signOut": "Cerrar sesión"
+  },
+  "home": {
+    "title": "Free Coders Books",
+    "subtitle": "Tu puerta de entrada moderna a recursos de programación gratuitos",
+    "heroDescription": "Descubre miles de libros de programación, cursos y recursos gratuitos en múltiples idiomas. Creado para desarrolladores, por la comunidad.",
+    "featuredCategories": "Categorías destacadas",
+    "popularBooks": "Libros populares",
+    "browseAll": "Ver todos los libros",
+    "statsBooks": "Libros",
+    "statsCategories": "Categorías",
+    "statsLanguages": "Idiomas",
+    "browseByLanguage": "Explorar por idioma",
+    "browseByLanguageSubtitle": "Explora recursos de programación gratuitos en tu idioma preferido",
+    "mindBooksTitle": "Libros que Expanden la Mente",
+    "mindBooksSubtitle": "Más allá de la programación - libros para todos",
+    "mindBooksDescription": "Explora recomendaciones de lectura curadas en filosofía, ciencia, ficción y más.",
+    "exploreMindBooks": "Explorar Mind Books"
+  },
+  "books": {
+    "title": "Explorar libros",
+    "subtitle": "Explora nuestra colección de recursos de programación gratuitos",
+    "filters": "Filtros",
+    "clearFilters": "Limpiar filtros",
+    "sortBy": "Ordenar por",
+    "sortNewest": "Más recientes",
+    "sortTitle": "Título A-Z",
+    "sortAuthor": "Autor A-Z",
+    "resourceType": "Tipo de recurso",
+    "contentLanguage": "Idioma del contenido",
+    "book": "Libro",
+    "course": "Curso",
+    "podcast": "Podcast",
+    "tutorial": "Tutorial",
+    "viewDetails": "Ver detalles",
+    "readNow": "Leer ahora",
+    "addBookmark": "Agregar a marcadores",
+    "removeBookmark": "Quitar de marcadores"
+  },
+  "categories": {
+    "title": "Categorías",
+    "subtitle": "Explorar recursos por tema",
+    "programmingLanguages": "Lenguajes de programación",
+    "subjects": "Temas y materias",
+    "booksInCategory": "{count} libros"
+  },
+  "bookmarks": {
+    "title": "Mis marcadores",
+    "subtitle": "Tus recursos guardados",
+    "empty": "Aún no has guardado ningún libro",
+    "emptyDescription": "Explora nuestra colección y guarda libros interesantes para después",
+    "startBrowsing": "Comenzar a explorar"
+  },
+  "auth": {
+    "signInTitle": "Iniciar sesión",
+    "signInDescription": "Inicia sesión para guardar marcadores y personalizar tu experiencia",
+    "continueWithGoogle": "Continuar con Google",
+    "continueWithGitHub": "Continuar con GitHub",
+    "signOutConfirm": "¿Estás seguro de que quieres cerrar sesión?"
+  },
+  "footer": {
+    "description": "Una interfaz moderna para recursos de programación gratuitos de la comunidad de código abierto.",
+    "dataSource": "Datos obtenidos de",
+    "freeBooks": "Free Programming Books",
+    "links": "Enlaces",
+    "about": "Acerca de",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "contact": "Contacto",
+    "copyright": "© {year} Free Coders Books. Todos los derechos reservados."
+  },
+  "theme": {
+    "toggle": "Cambiar tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema"
+  },
+  "language": {
+    "select": "Seleccionar idioma",
+    "en": "English",
+    "ko": "한국어",
+    "es": "Español"
+  },
+  "mindBooks": {
+    "badge": "Libros que Expanden la Mente",
+    "title": "Libros que Expanden la Mente",
+    "subtitle": "Lista de lectura curada para todos - desde filosofía hasta ciencia ficción. Libros que cambiarán tu forma de pensar.",
+    "searchPlaceholder": "Buscar libros, autores...",
+    "allCategories": "Todos",
+    "topRated": "Mejor Valorados",
+    "browseCategories": "Explorar por Categoría",
+    "statsBooks": "Libros",
+    "statsCategories": "Categorías",
+    "books": "libros",
+    "booksFound": "libros encontrados",
+    "searchResults": "Resultados de búsqueda",
+    "noResults": "No se encontraron libros",
+    "sourceAttribution": "Datos de"
+  }
+}

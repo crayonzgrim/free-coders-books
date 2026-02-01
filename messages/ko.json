@@ -1,0 +1,119 @@
+{
+  "common": {
+    "loading": "로딩 중...",
+    "error": "오류가 발생했습니다",
+    "search": "검색",
+    "searchPlaceholder": "책, 저자, 주제 검색...",
+    "allCategories": "모든 카테고리",
+    "allLanguages": "모든 언어",
+    "noResults": "검색 결과가 없습니다",
+    "showMore": "더 보기",
+    "showLess": "접기"
+  },
+  "nav": {
+    "home": "홈",
+    "books": "도서",
+    "categories": "카테고리",
+    "mindBooks": "마인드 북",
+    "bookmarks": "내 북마크",
+    "signIn": "로그인",
+    "signOut": "로그아웃"
+  },
+  "home": {
+    "title": "Free Coders Books",
+    "subtitle": "무료 프로그래밍 리소스의 현대적인 관문",
+    "heroDescription": "여러 언어로 제공되는 수천 개의 무료 프로그래밍 책, 강좌, 리소스를 발견하세요.\n커뮤니티에 의해, 개발자를 위해 만들어졌습니다.",
+    "featuredCategories": "주요 카테고리",
+    "popularBooks": "인기 도서",
+    "browseAll": "모든 도서 보기",
+    "statsBooks": "도서",
+    "statsCategories": "카테고리",
+    "statsLanguages": "언어",
+    "browseByLanguage": "언어별 탐색",
+    "browseByLanguageSubtitle": "원하는 언어로 무료 프로그래밍 리소스를 탐색하세요",
+    "mindBooksTitle": "마음을 넓히는 책",
+    "mindBooksSubtitle": "프로그래밍을 넘어 - 모두를 위한 책",
+    "mindBooksDescription": "철학, 과학, 소설 등 다양한 분야의 큐레이션된 독서 추천을 탐색하세요.",
+    "exploreMindBooks": "Mind Books 탐색"
+  },
+  "books": {
+    "title": "도서 탐색",
+    "subtitle": "무료 프로그래밍 리소스 컬렉션을 탐색하세요",
+    "filters": "필터",
+    "clearFilters": "필터 초기화",
+    "sortBy": "정렬",
+    "sortNewest": "최신순",
+    "sortTitle": "제목 A-Z",
+    "sortAuthor": "저자 A-Z",
+    "resourceType": "리소스 유형",
+    "contentLanguage": "콘텐츠 언어",
+    "book": "책",
+    "course": "강좌",
+    "podcast": "팟캐스트",
+    "tutorial": "튜토리얼",
+    "viewDetails": "상세 보기",
+    "readNow": "지금 읽기",
+    "addBookmark": "북마크에 추가",
+    "removeBookmark": "북마크에서 제거"
+  },
+  "categories": {
+    "title": "카테고리",
+    "subtitle": "주제별 리소스 탐색",
+    "programmingLanguages": "프로그래밍 언어",
+    "subjects": "주제 및 토픽",
+    "booksInCategory": "{count}권의 도서"
+  },
+  "bookmarks": {
+    "title": "내 북마크",
+    "subtitle": "저장한 리소스",
+    "empty": "아직 북마크한 도서가 없습니다",
+    "emptyDescription": "컬렉션을 탐색하고 관심 있는 도서를 저장하세요",
+    "startBrowsing": "탐색 시작"
+  },
+  "auth": {
+    "signInTitle": "로그인",
+    "signInDescription": "북마크를 저장하고 개인화된 경험을 위해 로그인하세요",
+    "continueWithGoogle": "Google로 계속",
+    "continueWithGitHub": "GitHub로 계속",
+    "signOutConfirm": "로그아웃 하시겠습니까?"
+  },
+  "footer": {
+    "description": "오픈소스 커뮤니티의 무료 프로그래밍 리소스를 위한 현대적인 인터페이스입니다.",
+    "dataSource": "데이터 출처",
+    "freeBooks": "Free Programming Books",
+    "links": "링크",
+    "about": "소개",
+    "privacy": "개인정보",
+    "terms": "이용약관",
+    "contact": "문의",
+    "copyright": "© {year} Free Coders Books. All rights reserved."
+  },
+  "theme": {
+    "toggle": "테마 전환",
+    "light": "라이트",
+    "dark": "다크",
+    "system": "시스템"
+  },
+  "language": {
+    "select": "언어 선택",
+    "en": "English",
+    "ko": "한국어",
+    "es": "Español"
+  },
+  "mindBooks": {
+    "badge": "마음을 넓히는 책",
+    "title": "마음을 넓히는 책",
+    "subtitle": "철학부터 SF까지, 모두를 위한 큐레이션된 독서 리스트. 당신의 사고를 바꿔줄 책들.",
+    "searchPlaceholder": "책, 저자 검색...",
+    "allCategories": "전체",
+    "topRated": "최고 평점 도서",
+    "browseCategories": "카테고리별 탐색",
+    "statsBooks": "도서",
+    "statsCategories": "카테고리",
+    "books": "권",
+    "booksFound": "권 발견",
+    "searchResults": "검색 결과",
+    "noResults": "검색 결과가 없습니다",
+    "sourceAttribution": "데이터 출처"
+  }
+}

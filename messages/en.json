@@ -1,0 +1,119 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "search": "Search",
+    "searchPlaceholder": "Search books, authors, topics...",
+    "allCategories": "All Categories",
+    "allLanguages": "All Languages",
+    "noResults": "No results found",
+    "showMore": "Show more",
+    "showLess": "Show less"
+  },
+  "nav": {
+    "home": "Home",
+    "books": "Books",
+    "categories": "Categories",
+    "mindBooks": "Mind Books",
+    "bookmarks": "My Bookmarks",
+    "signIn": "Sign In",
+    "signOut": "Sign Out"
+  },
+  "home": {
+    "title": "Free Coders Books",
+    "subtitle": "Your modern gateway to free programming resources",
+    "heroDescription": "Discover thousands of free programming books, courses, and resources in multiple languages. Built for developers, by the community.",
+    "featuredCategories": "Featured Categories",
+    "popularBooks": "Popular Books",
+    "browseAll": "Browse All Books",
+    "statsBooks": "Books",
+    "statsCategories": "Categories",
+    "statsLanguages": "Languages",
+    "browseByLanguage": "Browse by Language",
+    "browseByLanguageSubtitle": "Explore free programming resources in your preferred language",
+    "mindBooksTitle": "Mind-Expanding Books",
+    "mindBooksSubtitle": "Beyond programming - books for everyone",
+    "mindBooksDescription": "Explore curated reading recommendations in philosophy, science, fiction, and more.",
+    "exploreMindBooks": "Explore Mind Books"
+  },
+  "books": {
+    "title": "Browse Books",
+    "subtitle": "Explore our collection of free programming resources",
+    "filters": "Filters",
+    "clearFilters": "Clear filters",
+    "sortBy": "Sort by",
+    "sortNewest": "Newest",
+    "sortTitle": "Title A-Z",
+    "sortAuthor": "Author A-Z",
+    "resourceType": "Resource Type",
+    "contentLanguage": "Content Language",
+    "book": "Book",
+    "course": "Course",
+    "podcast": "Podcast",
+    "tutorial": "Tutorial",
+    "viewDetails": "View Details",
+    "readNow": "Read Now",
+    "addBookmark": "Add to Bookmarks",
+    "removeBookmark": "Remove from Bookmarks"
+  },
+  "categories": {
+    "title": "Categories",
+    "subtitle": "Browse resources by topic",
+    "programmingLanguages": "Programming Languages",
+    "subjects": "Subjects & Topics",
+    "booksInCategory": "{count} books"
+  },
+  "bookmarks": {
+    "title": "My Bookmarks",
+    "subtitle": "Your saved resources",
+    "empty": "You haven't bookmarked any books yet",
+    "emptyDescription": "Browse our collection and save interesting books for later",
+    "startBrowsing": "Start Browsing"
+  },
+  "auth": {
+    "signInTitle": "Sign In",
+    "signInDescription": "Sign in to save bookmarks and personalize your experience",
+    "continueWithGoogle": "Continue with Google",
+    "continueWithGitHub": "Continue with GitHub",
+    "signOutConfirm": "Are you sure you want to sign out?"
+  },
+  "footer": {
+    "description": "A modern interface for free programming resources from the open-source community.",
+    "dataSource": "Data sourced from",
+    "freeBooks": "Free Programming Books",
+    "links": "Links",
+    "about": "About",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact",
+    "copyright": "© {year} Free Coders Books. All rights reserved."
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "select": "Select language",
+    "en": "English",
+    "ko": "한국어",
+    "es": "Español"
+  },
+  "mindBooks": {
+    "badge": "Mind-Expanding Books",
+    "title": "Mind-Expanding Books",
+    "subtitle": "Curated reading list for everyone - from philosophy to science fiction. Books that will change how you think.",
+    "searchPlaceholder": "Search books, authors...",
+    "allCategories": "All",
+    "topRated": "Top Rated Books",
+    "browseCategories": "Browse by Category",
+    "statsBooks": "Books",
+    "statsCategories": "Categories",
+    "books": "books",
+    "booksFound": "books found",
+    "searchResults": "Search Results",
+    "noResults": "No books found matching your search",
+    "sourceAttribution": "Data from"
+  }
+}
