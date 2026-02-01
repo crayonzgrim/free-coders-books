@@ -1,37 +1,36 @@
-import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
-import { Link } from "@/lib/i18n/navigation";
 import { SearchBar } from "@/components/books/search-bar";
+import { LanguageSelector } from "@/components/home/language-selector";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { LanguageSelector } from "@/components/home/language-selector";
 import { getAllCategories } from "@/lib/books/fetch-books";
-import {
-  BookOpen,
-  Code,
-  Smartphone,
-  Cloud,
-  Brain,
-  Database,
-  ArrowRight,
-  Sparkles,
-  Globe,
-  Users,
-  Terminal,
-  Shield,
-  Gamepad2,
-  Monitor,
-  Server,
-  Cpu,
-  Network,
-  FileCode,
-  Boxes,
-  Lightbulb,
-  Star,
-  ExternalLink,
-  type LucideIcon,
-} from "lucide-react";
+import { Link } from "@/lib/i18n/navigation";
 import { getTopRatedMindBooks, type MindBook } from "@/lib/mind-books";
+import {
+  ArrowRight,
+  BookOpen,
+  Boxes,
+  Brain,
+  Cloud,
+  Code,
+  Cpu,
+  Database,
+  ExternalLink,
+  FileCode,
+  Gamepad2,
+  Globe,
+  Monitor,
+  Network,
+  Server,
+  Shield,
+  Smartphone,
+  Sparkles,
+  Star,
+  Terminal,
+  Users,
+  type LucideIcon
+} from "lucide-react";
+import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -123,7 +122,7 @@ function HomeContent({ categories, mindBooks }: HomeContentProps) {
 
             {/* Title */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-              <span className="bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent">
                 {t("title")}
               </span>
             </h1>
@@ -147,7 +146,7 @@ function HomeContent({ categories, mindBooks }: HomeContentProps) {
                 className="text-center p-4 rounded-2xl border border-gray-200 dark:border-gray-700"
               >
                 <stat.icon className="h-6 w-6 mx-auto mb-2 text-orange-500" />
-                <div className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+                <div className="text-2xl md:text-4xl font-bold bg-linear-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
                   {stat.value}
                 </div>
                 <div className="text-sm text-muted-foreground mt-1">
@@ -166,7 +165,7 @@ function HomeContent({ categories, mindBooks }: HomeContentProps) {
       />
 
       {/* Mind-Expanding Books Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-purple-50/50 to-transparent dark:from-purple-950/20">
+      <section className="py-16 md:py-24 bg-linear-to-b from-purple-50/50 to-transparent dark:from-purple-950/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-10">
             <div>
@@ -175,7 +174,7 @@ function HomeContent({ categories, mindBooks }: HomeContentProps) {
                 <span>{t("mindBooksSubtitle")}</span>
               </div>
               <h2 className="text-2xl md:text-3xl font-bold">
-                <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-purple-600 via-pink-500 to-indigo-500 bg-clip-text text-transparent">
                   {t("mindBooksTitle")}
                 </span>
               </h2>
@@ -206,7 +205,7 @@ function HomeContent({ categories, mindBooks }: HomeContentProps) {
                       <h3 className="font-semibold line-clamp-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                         {book.title}
                       </h3>
-                      <ExternalLink className="h-4 w-4 text-muted-foreground flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ExternalLink className="h-4 w-4 text-muted-foreground shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <p className="text-sm text-muted-foreground line-clamp-1">{book.author}</p>
                     <div className="flex items-center justify-between text-sm">
@@ -263,7 +262,7 @@ function HomeContent({ categories, mindBooks }: HomeContentProps) {
                           {category.count.toLocaleString()} resources
                         </p>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
+                      <div className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
                         <ArrowRight className="h-4 w-4 text-orange-500" />
                       </div>
                     </CardContent>
@@ -348,7 +347,7 @@ function HomeContent({ categories, mindBooks }: HomeContentProps) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/books">
-                <Button size="lg" className="gap-2 w-full sm:w-auto bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 shadow-warm-lg">
+                <Button size="lg" className="gap-2 w-full sm:w-auto bg-linear-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 shadow-warm-lg">
                   {t("browseAll")}
                   <ArrowRight className="h-4 w-4" />
                 </Button>
