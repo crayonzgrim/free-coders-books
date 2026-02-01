@@ -21,7 +21,7 @@
     "feedback": {
       "label": "Feedback",
       "mobile": "Bug report / Feature request (Copy email)",
-      "tooltip": "Bug report or feature request? Click to copy email",
+      "tooltip": "Click to copy email. Report bugs or suggest improvements!",
       "copied": "Copied!"
     }
   },
