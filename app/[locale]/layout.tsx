@@ -5,6 +5,7 @@ import { locales } from "@/lib/i18n/config";
 import { Providers } from "@/components/providers";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { KakaoAdFit } from "@/components/ui/kakao-adfit";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -33,6 +34,14 @@ export default async function LocaleLayout({
       <Providers>
         <div className="flex min-h-screen flex-col">
           <Header />
+          {/* Desktop Ad (728x90) */}
+          <div className="hidden justify-center bg-gray-50 py-2 dark:bg-gray-900 md:flex">
+            <KakaoAdFit unit="DAN-dUc48ftR9jSgaIoa" width={728} height={90} />
+          </div>
+          {/* Mobile Ad (320x50) */}
+          <div className="flex justify-center bg-gray-50 py-2 dark:bg-gray-900 md:hidden">
+            <KakaoAdFit unit="DAN-AV7388BjD8F7UVCc" width={320} height={50} />
+          </div>
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
