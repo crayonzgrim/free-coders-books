@@ -3,7 +3,8 @@
 import { useTranslations } from "next-intl";
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-import { useSession } from "next-auth/react";
+// NOTE: Authentication disabled - useSession removed
+// import { useSession } from "next-auth/react";
 import { BookList } from "@/components/books/book-list";
 import { BookFilters } from "@/components/books/book-filters";
 import { Button } from "@/components/ui/button";
@@ -26,7 +27,8 @@ interface BooksResponse {
 
 export function BooksContent() {
   const t = useTranslations("books");
-  const { data: session } = useSession();
+  // NOTE: Authentication disabled
+  const session = null as { user?: { id: string } } | null;
   const searchParams = useSearchParams();
 
   // Initialize state from URL params

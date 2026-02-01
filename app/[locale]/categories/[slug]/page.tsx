@@ -3,7 +3,8 @@
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import { useSession } from "next-auth/react";
+// NOTE: Authentication disabled - useSession removed
+// import { useSession } from "next-auth/react";
 import { BookList } from "@/components/books/book-list";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -25,7 +26,8 @@ export default function CategoryPage() {
   const params = useParams();
   const slug = params.slug as string;
   const t = useTranslations("categories");
-  const { data: session } = useSession();
+  // NOTE: Authentication disabled
+  const session = null as { user?: { id: string } } | null;
 
   const [data, setData] = useState<BooksResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);

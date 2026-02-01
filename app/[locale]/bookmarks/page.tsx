@@ -1,6 +1,7 @@
 "use client";
 
-import { useSession } from "next-auth/react";
+// NOTE: Authentication disabled - useSession removed
+// import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { BookList } from "@/components/books/book-list";
@@ -11,7 +12,9 @@ import type { Book } from "@/lib/books/types";
 import type { Bookmark as BookmarkType } from "@/lib/db/schema";
 
 export default function BookmarksPage() {
-  const { data: session, status } = useSession();
+  // NOTE: Authentication disabled
+  const session = null as { user?: { id: string } } | null;
+  const status = "unauthenticated" as const;
   const t = useTranslations("bookmarks");
 
   const [bookmarks, setBookmarks] = useState<BookmarkType[]>([]);
@@ -67,7 +70,8 @@ export default function BookmarksPage() {
     }
   };
 
-  if (status === "loading" || (session && isLoading)) {
+  // NOTE: Authentication disabled - skip loading state check
+  if (false) {
     return (
       <div className="min-h-screen">
         <div className="border-b border-gray-200 dark:border-gray-800">
