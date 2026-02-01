@@ -1,19 +1,40 @@
 "use client";
 
-import { UserMenu } from "@/components/auth/user-menu";
+// import { UserMenu } from "@/components/auth/user-menu";
 import { Button } from "@/components/ui/button";
 import { Link, usePathname } from "@/lib/i18n/navigation";
 import { cn } from "@/lib/utils";
-import { BookOpen, Menu, Sparkles, X } from "lucide-react";
+import { BookOpen, Mail, Menu, Sparkles, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { LanguageSwitcher } from "./language-switcher";
 import { ThemeToggle } from "./theme-toggle";
 
+const CONTACT_EMAIL = "crayonzgrim@gmail.com";
+
 export function Header() {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTACT_EMAIL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Fallback for older browsers
+      const textArea = document.createElement("textarea");
+      textArea.value = CONTACT_EMAIL;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
   const navItems = [
     { href: "/", label: t("home") },
@@ -72,9 +93,22 @@ export function Header() {
         <div className="flex items-center gap-1">
           <ThemeToggle />
           <LanguageSwitcher />
-          <div className="hidden sm:block">
+          {/* Feedback Email Button */}
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={copyEmail}
+            className="hidden sm:flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+            title={t("feedback.tooltip")}
+          >
+            <Mail className="h-4 w-4" />
+            <span className="hidden lg:inline">
+              {copied ? t("feedback.copied") : t("feedback.label")}
+            </span>
+          </Button>
+          {/* <div className="hidden sm:block">
             <UserMenu />
-          </div>
+          </div> */}
 
           {/* Mobile Menu Button */}
           <Button
@@ -112,9 +146,20 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            {/* Feedback Email - Mobile */}
             <div className="pt-2 border-t border-gray-200 dark:border-gray-800 mt-2">
-              <UserMenu />
+              <Button
+                variant="ghost"
+                onClick={copyEmail}
+                className="w-full justify-start gap-2 text-sm text-muted-foreground hover:text-foreground"
+              >
+                <Mail className="h-4 w-4" />
+                {copied ? t("feedback.copied") : t("feedback.mobile")}
+              </Button>
             </div>
+            {/* <div className="pt-2 border-t border-gray-200 dark:border-gray-800 mt-2">
+              <UserMenu />
+            </div> */}
           </nav>
         </div>
       )}

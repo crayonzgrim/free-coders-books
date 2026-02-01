@@ -17,7 +17,13 @@
     "mindBooks": "마인드 북",
     "bookmarks": "내 북마크",
     "signIn": "로그인",
-    "signOut": "로그아웃"
+    "signOut": "로그아웃",
+    "feedback": {
+      "label": "피드백",
+      "mobile": "버그 신고 / 기능 요청 (이메일 복사)",
+      "tooltip": "버그 신고 또는 기능 요청이 있으신가요? 클릭하여 이메일 복사",
+      "copied": "복사됨!"
+    }
   },
   "home": {
     "title": "Free Coders Books",

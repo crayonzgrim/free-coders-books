@@ -17,7 +17,13 @@
     "mindBooks": "Mind Books",
     "bookmarks": "My Bookmarks",
     "signIn": "Sign In",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "feedback": {
+      "label": "Feedback",
+      "mobile": "Bug report / Feature request (Copy email)",
+      "tooltip": "Bug report or feature request? Click to copy email",
+      "copied": "Copied!"
+    }
   },
   "home": {
     "title": "Free Coders Books",
