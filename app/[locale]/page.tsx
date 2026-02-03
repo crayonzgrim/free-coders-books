@@ -2,7 +2,9 @@ import { SearchBar } from "@/components/books/search-bar";
 import { LanguageSelector } from "@/components/home/language-selector";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { getAllArticles, type ArticlePreview } from "@/lib/articles";
 import { getAllCategories } from "@/lib/books/fetch-books";
+import { getAllGuides, type GuidePreview } from "@/lib/guides";
 import { Link } from "@/lib/i18n/navigation";
 import { getTopRatedMindBooks, type MindBook } from "@/lib/mind-books";
 import {
@@ -10,6 +12,7 @@ import {
   BookOpen,
   Boxes,
   Brain,
+  Clock,
   Cloud,
   Code,
   Cpu,
@@ -18,8 +21,10 @@ import {
   FileCode,
   Gamepad2,
   Globe,
+  GraduationCap,
   Monitor,
   Network,
+  Newspaper,
   Server,
   Shield,
   Smartphone,
@@ -88,16 +93,20 @@ export default async function HomePage({ params }: HomePageProps) {
 
   const categories = await getAllCategories();
   const mindBooks = await getTopRatedMindBooks(6);
+  const guides = await getAllGuides();
+  const articles = await getAllArticles();
 
-  return <HomeContent categories={categories} mindBooks={mindBooks} />;
+  return <HomeContent categories={categories} mindBooks={mindBooks} guides={guides.slice(0, 6)} articles={articles.slice(0, 3)} />;
 }
 
 interface HomeContentProps {
   categories: { name: string; slug: string; count: number }[];
   mindBooks: MindBook[];
+  guides: GuidePreview[];
+  articles: ArticlePreview[];
 }
 
-function HomeContent({ categories, mindBooks }: HomeContentProps) {
+function HomeContent({ categories, mindBooks, guides, articles }: HomeContentProps) {
   const t = useTranslations("home");
 
   const stats = [
@@ -153,6 +162,122 @@ function HomeContent({ categories, mindBooks }: HomeContentProps) {
                   {stat.label}
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Learning Guides Section - 자체 콘텐츠 */}
+      <section className="py-16 md:py-24 bg-linear-to-b from-emerald-50/50 to-transparent dark:from-emerald-950/20">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-10">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400 dark:border-emerald-600 px-3 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400 mb-3">
+                <GraduationCap className="h-3 w-3" />
+                <span>{t("guidesSubtitle")}</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold">
+                <span className="bg-linear-to-r from-emerald-600 via-teal-500 to-cyan-500 bg-clip-text text-transparent">
+                  {t("guidesTitle")}
+                </span>
+              </h2>
+              <p className="text-muted-foreground mt-1">
+                {t("guidesDescription")}
+              </p>
+            </div>
+            <Link href="/guides">
+              <Button variant="outline" className="gap-2 border-emerald-300 hover:border-emerald-400 hover:bg-emerald-50 dark:border-emerald-700 dark:hover:border-emerald-600 dark:hover:bg-emerald-950/50">
+                {t("exploreGuides")}
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {guides.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/guides/${guide.slug}`}
+                className="group"
+              >
+                <Card className="h-full hover:shadow-lg transition-all border-emerald-100 dark:border-emerald-900/30 hover:border-emerald-300 dark:hover:border-emerald-700">
+                  <CardContent className="p-5 space-y-3">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="font-semibold line-clamp-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                        {guide.title}
+                      </h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{guide.description}</p>
+                    <div className="flex items-center justify-between text-sm">
+                      <div className="flex items-center gap-1 text-muted-foreground">
+                        <Clock className="h-4 w-4" />
+                        <span>{guide.readingTime}{t("readingTimeUnit")}</span>
+                      </div>
+                      <span className="text-xs text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/30 px-2 py-1 rounded-full">
+                        {guide.category}
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Articles Section - 자체 콘텐츠 */}
+      <section className="py-16 md:py-24 bg-linear-to-b from-rose-50/50 to-transparent dark:from-rose-950/20">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-10">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-rose-400 dark:border-rose-600 px-3 py-1 text-xs font-medium text-rose-600 dark:text-rose-400 mb-3">
+                <Newspaper className="h-3 w-3" />
+                <span>{t("articlesSubtitle")}</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold">
+                <span className="bg-linear-to-r from-rose-600 via-pink-500 to-orange-500 bg-clip-text text-transparent">
+                  {t("articlesTitle")}
+                </span>
+              </h2>
+              <p className="text-muted-foreground mt-1">
+                {t("articlesDescription")}
+              </p>
+            </div>
+            <Link href="/articles">
+              <Button variant="outline" className="gap-2 border-rose-300 hover:border-rose-400 hover:bg-rose-50 dark:border-rose-700 dark:hover:border-rose-600 dark:hover:bg-rose-950/50">
+                {t("exploreArticles")}
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {articles.map((article) => (
+              <Link
+                key={article.slug}
+                href={`/articles/${article.slug}`}
+                className="group"
+              >
+                <Card className="h-full hover:shadow-lg transition-all border-rose-100 dark:border-rose-900/30 hover:border-rose-300 dark:hover:border-rose-700">
+                  <CardContent className="p-5 space-y-3">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="font-semibold line-clamp-2 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                        {article.title}
+                      </h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{article.description}</p>
+                    <div className="flex items-center justify-between text-sm">
+                      <div className="flex items-center gap-1 text-muted-foreground">
+                        <Clock className="h-4 w-4" />
+                        <span>{article.readingTime}{t("readingTimeUnit")}</span>
+                      </div>
+                      <span className="text-xs text-rose-600 dark:text-rose-400 bg-rose-100 dark:bg-rose-900/30 px-2 py-1 rounded-full">
+                        {article.category}
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
