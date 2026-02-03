@@ -15,6 +15,7 @@
     "books": "Libros",
     "categories": "Categorías",
     "guides": "Guías",
+    "articles": "Artículos",
     "mindBooks": "Mind Books",
     "bookmarks": "Mis marcadores",
     "signIn": "Iniciar sesión",
@@ -38,6 +39,15 @@
     "statsLanguages": "Idiomas",
     "browseByLanguage": "Explorar por idioma",
     "browseByLanguageSubtitle": "Explora recursos de programación gratuitos en tu idioma preferido",
+    "guidesTitle": "Guías de Aprendizaje de Programación",
+    "guidesSubtitle": "Contenido Original",
+    "guidesDescription": "Guías prácticas de programación para principiantes e intermedios.",
+    "exploreGuides": "Ver Guías",
+    "readingTimeUnit": " min",
+    "articlesTitle": "Artículos para Desarrolladores",
+    "articlesSubtitle": "Contenido Original",
+    "articlesDescription": "Ideas, experiencias y consejos de carrera para desarrolladores.",
+    "exploreArticles": "Ver Artículos",
     "mindBooksTitle": "Libros que Expanden la Mente",
     "mindBooksSubtitle": "Más allá de la programación - libros para todos",
     "mindBooksDescription": "Explora recomendaciones de lectura curadas en filosofía, ciencia, ficción y más.",
@@ -139,7 +149,107 @@
       "javascript": "JavaScript",
       "python": "Python",
       "backend": "Backend",
-      "learning": "Consejos de Aprendizaje"
+      "Backend": "Backend",
+      "learning": "Consejos de Aprendizaje",
+      "React": "React",
+      "CSS": "CSS",
+      "TypeScript": "TypeScript",
+      "DevOps": "DevOps",
+      "Security": "Seguridad",
+      "Career": "Carrera",
+      "Best Practices": "Mejores Prácticas",
+      "Algorithms": "Algoritmos"
+    }
+  },
+  "articles": {
+    "title": "Artículos",
+    "subtitle": "Ideas, experiencias y opiniones para desarrolladores",
+    "badge": "Contenido Original",
+    "readingTime": "Tiempo de lectura",
+    "minutes": " min",
+    "author": "Autor",
+    "publishedAt": "Publicado",
+    "backToList": "Volver a Artículos"
+  },
+  "about": {
+    "title": "Sobre Free Coders Books",
+    "subtitle": "Una plataforma que ofrece recursos de programación gratuitos para desarrolladores de todo el mundo. Ayudamos a todos a acceder a materiales de aprendizaje de programación de calidad de forma gratuita.",
+    "badge": "Sobre Nosotros",
+    "mission": {
+      "title": "Nuestra Misión",
+      "content": "La educación en programación debe estar abierta a todos. Free Coders Books reúne recursos de programación gratuitos de todo el mundo en un solo lugar para facilitar el acceso. Impulsados por la comunidad de código abierto, proporcionamos los materiales que los desarrolladores necesitan para aprender y crecer, completamente gratis."
+    },
+    "features": {
+      "title": "Características Principales",
+      "freeResources": {
+        "title": "10,000+ Recursos Gratuitos",
+        "description": "Proporcionamos varios tipos de materiales de aprendizaje de programación gratuitos, incluyendo libros, cursos, tutoriales y podcasts."
+      },
+      "multiLanguage": {
+        "title": "40+ Idiomas",
+        "description": "Explora recursos en más de 40 idiomas, incluyendo inglés, coreano, español y más."
+      },
+      "originalContent": {
+        "title": "Contenido Original",
+        "description": "Proporcionamos conocimientos prácticos de programación y consejos de carrera a través de nuestras guías de aprendizaje y artículos."
+      },
+      "community": {
+        "title": "Impulsado por la Comunidad",
+        "description": "Construido sobre el proyecto free-programming-books en GitHub, curado por colaboradores de todo el mundo."
+      }
+    },
+    "dataSource": {
+      "title": "Fuente de Datos",
+      "description": "Todos los datos de libros y recursos provienen del proyecto free-programming-books de EbookFoundation, uno de los repositorios más destacados en GitHub con más de 300,000 estrellas. Este proyecto es curado por desarrolladores de todo el mundo.",
+      "link": "Ver en GitHub"
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "Para preguntas, comentarios o propuestas de colaboración, contáctenos por correo electrónico."
+    }
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "subtitle": "Encuentra respuestas a preguntas comunes sobre Free Coders Books",
+    "badge": "FAQ",
+    "questions": {
+      "whatIs": {
+        "question": "¿Qué es Free Coders Books?",
+        "answer": "Free Coders Books es una plataforma web que reúne recursos de programación gratuitos de todo el mundo en un solo lugar. Puedes buscar y explorar fácilmente varios tipos de materiales de aprendizaje, incluyendo libros, cursos, tutoriales y podcasts."
+      },
+      "isFree": {
+        "question": "¿Todo es realmente gratis?",
+        "answer": "Sí, todos los enlaces de recursos proporcionados en Free Coders Books son gratuitos. Solo curamos materiales de aprendizaje legalmente gratuitos. Aunque algunos sitios externos pueden ofrecer opciones de pago, el contenido básico es de acceso libre."
+      },
+      "dataSource": {
+        "question": "¿De dónde vienen los datos?",
+        "answer": "Los datos de libros y recursos provienen del proyecto free-programming-books en GitHub. Este proyecto de código abierto ha recibido más de 300,000 estrellas y es mantenido por colaboradores de todo el mundo."
+      },
+      "contribute": {
+        "question": "¿Cómo puedo agregar nuevos recursos?",
+        "answer": "Si conoces recursos de programación gratuitos, puedes contribuir directamente al repositorio free-programming-books en GitHub. Envía un Pull Request para sugerir nuevos recursos, que serán revisados por la comunidad antes de ser añadidos."
+      },
+      "languages": {
+        "question": "¿Qué idiomas se admiten?",
+        "answer": "La interfaz del sitio web actualmente admite inglés, coreano y español. Los recursos en sí incluyen contenido en más de 40 idiomas, que puedes filtrar por idioma para encontrar lo que necesitas."
+      },
+      "guides": {
+        "question": "¿Qué son las Guías de Aprendizaje?",
+        "answer": "Las Guías de Aprendizaje son contenido de aprendizaje de programación escrito directamente por el equipo de Free Coders Books. Desde hojas de ruta para principiantes hasta guías detalladas sobre tecnologías específicas, proporcionamos materiales de aprendizaje prácticos."
+      },
+      "articles": {
+        "question": "¿Qué es la sección de Artículos?",
+        "answer": "La sección de Artículos cubre ideas, experiencias compartidas y consejos de carrera para desarrolladores. A diferencia de las guías técnicas, aborda varios temas relacionados con la vida y el crecimiento del desarrollador."
+      },
+      "contact": {
+        "question": "¿Cómo puedo contactarlos?",
+        "answer": "Para reportes de errores, solicitudes de funciones o consultas generales, envíe un correo electrónico a crayonzgrim@gmail.com. Responderemos lo antes posible."
+      }
+    },
+    "cta": {
+      "title": "¿Aún tienes preguntas?",
+      "description": "Si no encontraste tu respuesta en las FAQ anteriores, no dudes en enviarnos un correo electrónico.",
+      "button": "Enviar Correo"
     }
   }
 }

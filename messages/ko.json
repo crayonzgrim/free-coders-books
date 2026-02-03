@@ -15,6 +15,7 @@
     "books": "도서",
     "categories": "카테고리",
     "guides": "학습 가이드",
+    "articles": "아티클",
     "mindBooks": "마인드 북",
     "bookmarks": "내 북마크",
     "signIn": "로그인",
@@ -38,6 +39,15 @@
     "statsLanguages": "언어",
     "browseByLanguage": "언어별 탐색",
     "browseByLanguageSubtitle": "원하는 언어로 무료 프로그래밍 리소스를 탐색하세요",
+    "guidesTitle": "프로그래밍 학습 가이드",
+    "guidesSubtitle": "자체 제작 콘텐츠",
+    "guidesDescription": "초보자부터 중급자까지, 실용적인 프로그래밍 학습 가이드를 제공합니다.",
+    "exploreGuides": "가이드 보기",
+    "readingTimeUnit": "분",
+    "articlesTitle": "개발자 아티클",
+    "articlesSubtitle": "오리지널 콘텐츠",
+    "articlesDescription": "개발자를 위한 인사이트, 경험, 커리어 조언을 공유합니다.",
+    "exploreArticles": "아티클 보기",
     "mindBooksTitle": "마음을 넓히는 책",
     "mindBooksSubtitle": "프로그래밍을 넘어 - 모두를 위한 책",
     "mindBooksDescription": "철학, 과학, 소설 등 다양한 분야의 큐레이션된 독서 추천을 탐색하세요.",
@@ -139,7 +149,107 @@
       "javascript": "JavaScript",
       "python": "Python",
       "backend": "백엔드",
-      "learning": "학습법"
+      "Backend": "백엔드",
+      "learning": "학습법",
+      "React": "React",
+      "CSS": "CSS",
+      "TypeScript": "TypeScript",
+      "DevOps": "DevOps",
+      "Security": "보안",
+      "Career": "커리어",
+      "Best Practices": "모범 사례",
+      "Algorithms": "알고리즘"
+    }
+  },
+  "articles": {
+    "title": "아티클",
+    "subtitle": "개발자를 위한 인사이트, 경험, 그리고 의견을 공유합니다",
+    "badge": "오리지널 콘텐츠",
+    "readingTime": "읽는 시간",
+    "minutes": "분",
+    "author": "작성자",
+    "publishedAt": "작성일",
+    "backToList": "아티클 목록으로"
+  },
+  "about": {
+    "title": "Free Coders Books 소개",
+    "subtitle": "전 세계 개발자를 위한 무료 프로그래밍 리소스 플랫폼입니다. 누구나 무료로 양질의 프로그래밍 학습 자료에 접근할 수 있도록 돕습니다.",
+    "badge": "우리에 대해",
+    "mission": {
+      "title": "우리의 미션",
+      "content": "프로그래밍 교육은 모든 사람에게 열려 있어야 합니다. Free Coders Books는 전 세계의 무료 프로그래밍 리소스를 한 곳에 모아 쉽게 접근할 수 있도록 합니다. 오픈소스 커뮤니티의 힘을 바탕으로, 개발자들이 학습하고 성장하는 데 필요한 자료를 무료로 제공합니다."
+    },
+    "features": {
+      "title": "주요 특징",
+      "freeResources": {
+        "title": "10,000+ 무료 리소스",
+        "description": "책, 강좌, 튜토리얼, 팟캐스트 등 다양한 형태의 무료 프로그래밍 학습 자료를 제공합니다."
+      },
+      "multiLanguage": {
+        "title": "40+ 언어 지원",
+        "description": "영어, 한국어, 스페인어 등 전 세계 40개 이상의 언어로 된 리소스를 탐색할 수 있습니다."
+      },
+      "originalContent": {
+        "title": "자체 제작 콘텐츠",
+        "description": "학습 가이드와 아티클을 통해 실용적인 프로그래밍 지식과 커리어 조언을 제공합니다."
+      },
+      "community": {
+        "title": "커뮤니티 기반",
+        "description": "GitHub의 free-programming-books 프로젝트를 기반으로, 전 세계 기여자들이 함께 만들어갑니다."
+      }
+    },
+    "dataSource": {
+      "title": "데이터 출처",
+      "description": "모든 도서 및 리소스 데이터는 GitHub에서 가장 많은 스타를 받은 저장소 중 하나인 EbookFoundation의 free-programming-books 프로젝트에서 제공됩니다. 300,000개 이상의 스타를 받은 이 프로젝트는 전 세계 개발자들이 함께 큐레이션합니다.",
+      "link": "GitHub에서 보기"
+    },
+    "contact": {
+      "title": "연락처",
+      "description": "질문, 피드백, 또는 협업 제안이 있으시면 이메일로 연락해 주세요."
+    }
+  },
+  "faq": {
+    "title": "자주 묻는 질문",
+    "subtitle": "Free Coders Books에 대해 궁금한 점을 확인하세요",
+    "badge": "FAQ",
+    "questions": {
+      "whatIs": {
+        "question": "Free Coders Books는 무엇인가요?",
+        "answer": "Free Coders Books는 전 세계의 무료 프로그래밍 리소스를 한 곳에 모아 제공하는 웹 플랫폼입니다. 책, 강좌, 튜토리얼, 팟캐스트 등 다양한 형태의 학습 자료를 쉽게 검색하고 탐색할 수 있습니다."
+      },
+      "isFree": {
+        "question": "정말 모든 것이 무료인가요?",
+        "answer": "네, Free Coders Books에서 제공하는 모든 리소스 링크는 무료입니다. 우리는 무료로 제공되는 합법적인 학습 자료만을 큐레이션합니다. 일부 외부 사이트에서는 유료 옵션을 제공할 수 있지만, 기본 콘텐츠는 무료로 접근 가능합니다."
+      },
+      "dataSource": {
+        "question": "데이터는 어디서 오나요?",
+        "answer": "도서 및 리소스 데이터는 GitHub의 free-programming-books 프로젝트에서 가져옵니다. 이 프로젝트는 300,000개 이상의 스타를 받은 오픈소스 프로젝트로, 전 세계 기여자들이 함께 관리합니다."
+      },
+      "contribute": {
+        "question": "새로운 리소스를 추가하고 싶어요. 어떻게 하나요?",
+        "answer": "새로운 무료 프로그래밍 리소스를 알고 계신다면 GitHub의 free-programming-books 저장소에 직접 기여하실 수 있습니다. Pull Request를 통해 새 리소스를 제안하면 커뮤니티 리뷰를 거쳐 추가됩니다."
+      },
+      "languages": {
+        "question": "어떤 언어를 지원하나요?",
+        "answer": "현재 웹사이트 인터페이스는 한국어, 영어, 스페인어를 지원합니다. 리소스 자체는 40개 이상의 언어로 된 콘텐츠를 포함하고 있어, 언어별로 필터링하여 원하는 자료를 찾을 수 있습니다."
+      },
+      "guides": {
+        "question": "학습 가이드는 무엇인가요?",
+        "answer": "학습 가이드는 Free Coders Books 팀이 직접 작성한 프로그래밍 학습 콘텐츠입니다. 초보자를 위한 로드맵부터 특정 기술에 대한 깊이 있는 가이드까지, 실용적인 학습 자료를 제공합니다."
+      },
+      "articles": {
+        "question": "아티클 섹션은 무엇인가요?",
+        "answer": "아티클 섹션에서는 개발자를 위한 인사이트, 경험 공유, 커리어 조언 등을 다룹니다. 기술적인 가이드와는 다르게, 개발자 생활과 성장에 관한 다양한 주제를 다룹니다."
+      },
+      "contact": {
+        "question": "문의는 어떻게 하나요?",
+        "answer": "버그 리포트, 기능 요청, 또는 일반적인 문의는 crayonzgrim@gmail.com으로 이메일을 보내주세요. 가능한 빨리 답변드리겠습니다."
+      }
+    },
+    "cta": {
+      "title": "더 궁금한 점이 있으신가요?",
+      "description": "위 FAQ에서 답을 찾지 못하셨다면 언제든 이메일로 문의해 주세요.",
+      "button": "이메일 보내기"
     }
   }
 }

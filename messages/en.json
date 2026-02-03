@@ -15,6 +15,7 @@
     "books": "Books",
     "categories": "Categories",
     "guides": "Guides",
+    "articles": "Articles",
     "mindBooks": "Mind Books",
     "bookmarks": "My Bookmarks",
     "signIn": "Sign In",
@@ -38,6 +39,15 @@
     "statsLanguages": "Languages",
     "browseByLanguage": "Browse by Language",
     "browseByLanguageSubtitle": "Explore free programming resources in your preferred language",
+    "guidesTitle": "Programming Learning Guides",
+    "guidesSubtitle": "Original Content",
+    "guidesDescription": "Practical programming guides for beginners to intermediate learners.",
+    "exploreGuides": "View Guides",
+    "readingTimeUnit": " min",
+    "articlesTitle": "Developer Articles",
+    "articlesSubtitle": "Original Content",
+    "articlesDescription": "Insights, experiences, and career advice for developers.",
+    "exploreArticles": "View Articles",
     "mindBooksTitle": "Mind-Expanding Books",
     "mindBooksSubtitle": "Beyond programming - books for everyone",
     "mindBooksDescription": "Explore curated reading recommendations in philosophy, science, fiction, and more.",
@@ -139,7 +149,107 @@
       "javascript": "JavaScript",
       "python": "Python",
       "backend": "Backend",
-      "learning": "Learning Tips"
+      "Backend": "Backend",
+      "learning": "Learning Tips",
+      "React": "React",
+      "CSS": "CSS",
+      "TypeScript": "TypeScript",
+      "DevOps": "DevOps",
+      "Security": "Security",
+      "Career": "Career",
+      "Best Practices": "Best Practices",
+      "Algorithms": "Algorithms"
+    }
+  },
+  "articles": {
+    "title": "Articles",
+    "subtitle": "Insights, experiences, and opinions for developers",
+    "badge": "Original Content",
+    "readingTime": "Reading time",
+    "minutes": " min",
+    "author": "Author",
+    "publishedAt": "Published",
+    "backToList": "Back to Articles"
+  },
+  "about": {
+    "title": "About Free Coders Books",
+    "subtitle": "A platform providing free programming resources for developers worldwide. We help everyone access quality programming learning materials for free.",
+    "badge": "About Us",
+    "mission": {
+      "title": "Our Mission",
+      "content": "Programming education should be open to everyone. Free Coders Books gathers free programming resources from around the world in one place for easy access. Powered by the open-source community, we provide the materials developers need to learn and grow, completely free of charge."
+    },
+    "features": {
+      "title": "Key Features",
+      "freeResources": {
+        "title": "10,000+ Free Resources",
+        "description": "We provide various types of free programming learning materials including books, courses, tutorials, and podcasts."
+      },
+      "multiLanguage": {
+        "title": "40+ Languages",
+        "description": "Explore resources in over 40 languages including English, Korean, Spanish, and more."
+      },
+      "originalContent": {
+        "title": "Original Content",
+        "description": "We provide practical programming knowledge and career advice through our learning guides and articles."
+      },
+      "community": {
+        "title": "Community Driven",
+        "description": "Built on the free-programming-books project on GitHub, curated by contributors worldwide."
+      }
+    },
+    "dataSource": {
+      "title": "Data Source",
+      "description": "All book and resource data comes from EbookFoundation's free-programming-books project, one of the most starred repositories on GitHub with 300,000+ stars. This project is curated by developers worldwide.",
+      "link": "View on GitHub"
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "For questions, feedback, or collaboration proposals, please contact us via email."
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about Free Coders Books",
+    "badge": "FAQ",
+    "questions": {
+      "whatIs": {
+        "question": "What is Free Coders Books?",
+        "answer": "Free Coders Books is a web platform that gathers free programming resources from around the world in one place. You can easily search and explore various types of learning materials including books, courses, tutorials, and podcasts."
+      },
+      "isFree": {
+        "question": "Is everything really free?",
+        "answer": "Yes, all resource links provided on Free Coders Books are free. We only curate legally free learning materials. While some external sites may offer paid options, the basic content is freely accessible."
+      },
+      "dataSource": {
+        "question": "Where does the data come from?",
+        "answer": "Book and resource data comes from the free-programming-books project on GitHub. This open-source project has received over 300,000 stars and is maintained by contributors worldwide."
+      },
+      "contribute": {
+        "question": "How can I add new resources?",
+        "answer": "If you know of free programming resources, you can contribute directly to the free-programming-books repository on GitHub. Submit a Pull Request to suggest new resources, which will be reviewed by the community before being added."
+      },
+      "languages": {
+        "question": "What languages are supported?",
+        "answer": "The website interface currently supports English, Korean, and Spanish. The resources themselves include content in over 40 languages, which you can filter by language to find what you need."
+      },
+      "guides": {
+        "question": "What are Learning Guides?",
+        "answer": "Learning Guides are programming learning content written directly by the Free Coders Books team. From beginner roadmaps to in-depth guides on specific technologies, we provide practical learning materials."
+      },
+      "articles": {
+        "question": "What is the Articles section?",
+        "answer": "The Articles section covers insights, experience sharing, and career advice for developers. Unlike technical guides, it addresses various topics related to developer life and growth."
+      },
+      "contact": {
+        "question": "How can I contact you?",
+        "answer": "For bug reports, feature requests, or general inquiries, please email crayonzgrim@gmail.com. We'll respond as soon as possible."
+      }
+    },
+    "cta": {
+      "title": "Still have questions?",
+      "description": "If you couldn't find your answer in the FAQ above, feel free to email us anytime.",
+      "button": "Send Email"
     }
   }
 }
