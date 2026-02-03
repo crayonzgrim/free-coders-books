@@ -8,7 +8,8 @@ import { useParams } from "next/navigation";
 import { BookList } from "@/components/books/book-list";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Layers, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { Select } from "@/components/ui/select";
+import { ArrowLeft, Layers, Sparkles, ChevronLeft, ChevronRight, Globe } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import type { Book } from "@/lib/books/types";
 
@@ -32,9 +33,27 @@ export default function CategoryPage() {
   const [data, setData] = useState<BooksResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [language, setLanguage] = useState<string>("");
+  const [availableLanguages, setAvailableLanguages] = useState<{ code: string; name: string; count: number }[]>([]);
   const [bookmarkedUrls, setBookmarkedUrls] = useState<string[]>([]);
   const [likedUrls, setLikedUrls] = useState<string[]>([]);
   const [likeCounts, setLikeCounts] = useState<Record<string, number>>({});
+
+  // Fetch available languages on mount
+  useEffect(() => {
+    const fetchLanguages = async () => {
+      try {
+        const res = await fetch(`/api/books?category=${slug}&perPage=1`);
+        const json = await res.json();
+        if (json.filters?.languages) {
+          setAvailableLanguages(json.filters.languages);
+        }
+      } catch (error) {
+        console.error("Error fetching languages:", error);
+      }
+    };
+    fetchLanguages();
+  }, [slug]);
 
   // Fetch books for this category
   useEffect(() => {
@@ -45,6 +64,9 @@ export default function CategoryPage() {
         params.set("category", slug);
         params.set("page", page.toString());
         params.set("perPage", "24");
+        if (language) {
+          params.set("language", language);
+        }
 
         const res = await fetch(`/api/books?${params}`);
         const json = await res.json();
@@ -67,7 +89,13 @@ export default function CategoryPage() {
     };
 
     fetchBooks();
-  }, [slug, page]);
+  }, [slug, page, language]);
+
+  // Reset page when language changes
+  const handleLanguageChange = (value: string) => {
+    setLanguage(value === "all" ? "" : value);
+    setPage(1);
+  };
 
   // Fetch user's bookmarks and likes
   useEffect(() => {
@@ -178,18 +206,42 @@ export default function CategoryPage() {
       </div>
 
       <div className="container mx-auto px-4 py-8">
-        {/* Results count */}
-        {!isLoading && data?.pagination && (
-          <div className="mb-6 flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-orange-500" />
-            <span className="text-sm font-medium">
-              <span className="text-orange-600 dark:text-orange-400">
-                {data.pagination.total}
-              </span>{" "}
-              <span className="text-muted-foreground">resources in {categoryName}</span>
-            </span>
+        {/* Language Filter & Results count */}
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          {/* Language Filter */}
+          <div className="flex items-center gap-2">
+            <Globe className="h-4 w-4 text-muted-foreground" />
+            <Select
+              value={language || "all"}
+              onChange={(e) => handleLanguageChange(e.target.value)}
+              options={[
+                { value: "all", label: "All Languages" },
+                ...availableLanguages.map((lang) => ({
+                  value: lang.code,
+                  label: `${lang.name} (${lang.count})`
+                })),
+              ]}
+              className="w-[220px]"
+            />
           </div>
-        )}
+
+          {/* Results count */}
+          {!isLoading && data?.pagination && (
+            <div className="flex items-center gap-2">
+              <Sparkles className="h-4 w-4 text-orange-500" />
+              <span className="text-sm font-medium">
+                <span className="text-orange-600 dark:text-orange-400">
+                  {data.pagination.total}
+                </span>{" "}
+                <span className="text-muted-foreground">
+                  resources
+                  {language ? ` in ${availableLanguages.find(l => l.code === language)?.name || language}` : ""}
+                  {" "}in {categoryName}
+                </span>
+              </span>
+            </div>
+          )}
+        </div>
 
         {/* Book List */}
         <BookList
