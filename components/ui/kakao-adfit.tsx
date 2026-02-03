@@ -9,28 +9,50 @@ interface KakaoAdFitProps {
   className?: string;
 }
 
-export function KakaoAdFit({ unit, width, height, className }: KakaoAdFitProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isLoaded = useRef(false);
+// 전역 스크립트 로드 상태
+let isScriptLoaded = false;
+let isScriptLoading = false;
 
-  useEffect(() => {
-    if (isLoaded.current) return;
+function loadAdFitScript(): Promise<void> {
+  return new Promise((resolve) => {
+    if (isScriptLoaded) {
+      resolve();
+      return;
+    }
 
-    const container = containerRef.current;
-    if (!container) return;
+    if (isScriptLoading) {
+      // 이미 로딩 중이면 로드 완료될 때까지 대기
+      const checkLoaded = setInterval(() => {
+        if (isScriptLoaded) {
+          clearInterval(checkLoaded);
+          resolve();
+        }
+      }, 100);
+      return;
+    }
 
+    isScriptLoading = true;
     const script = document.createElement("script");
     script.src = "//t1.daumcdn.net/kas/static/ba.min.js";
     script.async = true;
-
-    container.appendChild(script);
-    isLoaded.current = true;
-
-    return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
+    script.onload = () => {
+      isScriptLoaded = true;
+      isScriptLoading = false;
+      resolve();
     };
+    document.head.appendChild(script);
+  });
+}
+
+export function KakaoAdFit({ unit, width, height, className }: KakaoAdFitProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInitialized = useRef(false);
+
+  useEffect(() => {
+    if (isInitialized.current) return;
+    isInitialized.current = true;
+
+    loadAdFitScript();
   }, []);
 
   return (
