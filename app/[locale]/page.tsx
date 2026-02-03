@@ -1,12 +1,10 @@
 import { SearchBar } from "@/components/books/search-bar";
-import { LanguageSelector } from "@/components/home/language-selector";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getAllArticles, type ArticlePreview } from "@/lib/articles";
 import { getAllCategories } from "@/lib/books/fetch-books";
 import { getAllGuides, type GuidePreview } from "@/lib/guides";
 import { Link } from "@/lib/i18n/navigation";
-import { getTopRatedMindBooks, type MindBook } from "@/lib/mind-books";
 import {
   ArrowRight,
   BookOpen,
@@ -17,10 +15,9 @@ import {
   Code,
   Cpu,
   Database,
-  ExternalLink,
   FileCode,
+  FileText,
   Gamepad2,
-  Globe,
   GraduationCap,
   Monitor,
   Network,
@@ -29,9 +26,7 @@ import {
   Shield,
   Smartphone,
   Sparkles,
-  Star,
   Terminal,
-  Users,
   type LucideIcon
 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -92,27 +87,27 @@ export default async function HomePage({ params }: HomePageProps) {
   setRequestLocale(locale);
 
   const categories = await getAllCategories();
-  const mindBooks = await getTopRatedMindBooks(6);
   const guides = await getAllGuides();
   const articles = await getAllArticles();
 
-  return <HomeContent categories={categories} mindBooks={mindBooks} guides={guides.slice(0, 6)} articles={articles.slice(0, 3)} />;
+  return <HomeContent categories={categories} guides={guides.slice(0, 6)} articles={articles.slice(0, 3)} totalGuides={guides.length} totalArticles={articles.length} />;
 }
 
 interface HomeContentProps {
   categories: { name: string; slug: string; count: number }[];
-  mindBooks: MindBook[];
   guides: GuidePreview[];
   articles: ArticlePreview[];
+  totalGuides: number;
+  totalArticles: number;
 }
 
-function HomeContent({ categories, mindBooks, guides, articles }: HomeContentProps) {
+function HomeContent({ categories, guides, articles, totalGuides, totalArticles }: HomeContentProps) {
   const t = useTranslations("home");
 
   const stats = [
-    { value: "10,000+", label: t("statsBooks"), icon: BookOpen },
-    { value: "50+", label: t("statsCategories"), icon: Sparkles },
-    { value: "40+", label: t("statsLanguages"), icon: Globe },
+    { value: `${totalGuides}+`, label: t("statsGuides"), icon: GraduationCap },
+    { value: `${totalArticles}+`, label: t("statsArticles"), icon: FileText },
+    { value: `${categories.length}+`, label: t("statsCategories"), icon: Sparkles },
   ];
 
   return (
@@ -283,73 +278,6 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
         </div>
       </section>
 
-      {/* Language Selector */}
-      <LanguageSelector
-        title={t("browseByLanguage")}
-        subtitle={t("browseByLanguageSubtitle")}
-      />
-
-      {/* Mind-Expanding Books Section */}
-      <section className="py-16 md:py-24 bg-linear-to-b from-purple-50/50 to-transparent dark:from-purple-950/20">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between mb-10">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-purple-400 dark:border-purple-600 px-3 py-1 text-xs font-medium text-purple-600 dark:text-purple-400 mb-3">
-                <Brain className="h-3 w-3" />
-                <span>{t("mindBooksSubtitle")}</span>
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold">
-                <span className="bg-linear-to-r from-purple-600 via-pink-500 to-indigo-500 bg-clip-text text-transparent">
-                  {t("mindBooksTitle")}
-                </span>
-              </h2>
-              <p className="text-muted-foreground mt-1">
-                {t("mindBooksDescription")}
-              </p>
-            </div>
-            <Link href="/mind-books">
-              <Button variant="outline" className="gap-2 border-purple-300 hover:border-purple-400 hover:bg-purple-50 dark:border-purple-700 dark:hover:border-purple-600 dark:hover:bg-purple-950/50">
-                {t("exploreMindBooks")}
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {mindBooks.map((book, index) => (
-              <a
-                key={`${book.title}-${index}`}
-                href={book.goodreadsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group"
-              >
-                <Card className="h-full hover:shadow-lg transition-all border-purple-100 dark:border-purple-900/30 hover:border-purple-300 dark:hover:border-purple-700">
-                  <CardContent className="p-5 space-y-3">
-                    <div className="flex items-start justify-between gap-2">
-                      <h3 className="font-semibold line-clamp-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                        {book.title}
-                      </h3>
-                      <ExternalLink className="h-4 w-4 text-muted-foreground shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                    <p className="text-sm text-muted-foreground line-clamp-1">{book.author}</p>
-                    <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-1 text-amber-500">
-                        <Star className="h-4 w-4 fill-current" />
-                        <span className="font-medium">{book.goodreadsRating.toFixed(2)}</span>
-                      </div>
-                      <span className="text-xs text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/30 px-2 py-1 rounded-full">
-                        {book.category}
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* All Categories */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
@@ -399,28 +327,19 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
         </div>
       </section>
 
-      {/* Community Section */}
+      {/* Features Section */}
       <section className="py-16 md:py-24 border-y border-gray-100 dark:border-gray-800">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-orange-500 mb-6">
-                <Users className="h-8 w-8 text-white" />
+                <GraduationCap className="h-8 w-8 text-white" />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                Powered by the Community
+                {t("featuresTitle")}
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                All resources are curated from the amazing{" "}
-                <a
-                  href="https://github.com/EbookFoundation/free-programming-books"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-orange-600 dark:text-orange-400 hover:underline font-medium"
-                >
-                  free-programming-books
-                </a>{" "}
-                project, one of the most starred repositories on GitHub with 300k+ stars.
+                {t("featuresDescription")}
               </p>
             </div>
 
@@ -428,19 +347,19 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 {
-                  title: "Always Free",
-                  description: "Every resource is completely free and open to everyone",
-                  icon: "🆓",
+                  title: t("feature1Title"),
+                  description: t("feature1Description"),
+                  icon: "📚",
                 },
                 {
-                  title: "Multi-language",
-                  description: "Resources available in 40+ languages worldwide",
-                  icon: "🌍",
+                  title: t("feature2Title"),
+                  description: t("feature2Description"),
+                  icon: "🎯",
                 },
                 {
-                  title: "Updated Daily",
-                  description: "New resources added and verified by contributors",
-                  icon: "✨",
+                  title: t("feature3Title"),
+                  description: t("feature3Description"),
+                  icon: "💡",
                 },
               ].map((feature) => (
                 <div
@@ -464,22 +383,21 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-2xl mx-auto">
             <h2 className="text-2xl md:text-4xl font-bold mb-4">
-              Ready to start learning?
+              {t("ctaTitle")}
             </h2>
             <p className="text-muted-foreground mb-8 text-lg">
-              Browse through our extensive collection of free programming resources
-              and level up your skills today.
+              {t("ctaDescription")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/books">
-                <Button size="lg" className="gap-2 w-full sm:w-auto bg-linear-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 shadow-warm-lg">
-                  {t("browseAll")}
+              <Link href="/guides">
+                <Button size="lg" className="gap-2 w-full sm:w-auto bg-linear-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-lg">
+                  {t("exploreGuides")}
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/categories">
+              <Link href="/articles">
                 <Button size="lg" variant="outline" className="gap-2 w-full sm:w-auto">
-                  Explore Categories
+                  {t("exploreArticles")}
                 </Button>
               </Link>
             </div>
