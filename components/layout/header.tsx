@@ -46,6 +46,7 @@ export function Header() {
     { href: "/", label: t("home") },
     { href: "/books", label: t("books") },
     { href: "/categories", label: t("categories") },
+    { href: "/guides", label: t("guides") },
     { href: "/mind-books", label: t("mindBooks") },
   ];
 
