@@ -44,10 +44,11 @@ export function Header() {
 
   const navItems = [
     { href: "/", label: t("home") },
+    { href: "/books", label: t("books") },
+    { href: "/categories", label: t("categories") },
     { href: "/guides", label: t("guides") },
     { href: "/articles", label: t("articles") },
-    { href: "/categories", label: t("categories") },
-    { href: "/books", label: t("books") },
+    { href: "/mind-books", label: t("mindBooks") },
   ];
 
   const isActive = (href: string) => {
