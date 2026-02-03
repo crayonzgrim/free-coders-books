@@ -14,6 +14,7 @@
     "home": "Inicio",
     "books": "Libros",
     "categories": "Categorías",
+    "guides": "Guías",
     "mindBooks": "Mind Books",
     "bookmarks": "Mis marcadores",
     "signIn": "Iniciar sesión",
@@ -121,5 +122,24 @@
     "searchResults": "Resultados de búsqueda",
     "noResults": "No se encontraron libros",
     "sourceAttribution": "Datos de"
+  },
+  "guides": {
+    "title": "Guías de Aprendizaje",
+    "subtitle": "Guías prácticas para aprender programación",
+    "badge": "Contenido Original",
+    "readingTime": "Tiempo de lectura",
+    "minutes": "min",
+    "author": "Autor",
+    "publishedAt": "Publicado",
+    "backToList": "Volver a Guías",
+    "relatedBooks": "Encontrar Libros Relacionados",
+    "categories": {
+      "all": "Todos",
+      "beginner": "Principiante",
+      "javascript": "JavaScript",
+      "python": "Python",
+      "backend": "Backend",
+      "learning": "Consejos de Aprendizaje"
+    }
   }
 }

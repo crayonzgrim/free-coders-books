@@ -14,6 +14,7 @@
     "home": "홈",
     "books": "도서",
     "categories": "카테고리",
+    "guides": "학습 가이드",
     "mindBooks": "마인드 북",
     "bookmarks": "내 북마크",
     "signIn": "로그인",
@@ -121,5 +122,24 @@
     "searchResults": "검색 결과",
     "noResults": "검색 결과가 없습니다",
     "sourceAttribution": "데이터 출처"
+  },
+  "guides": {
+    "title": "학습 가이드",
+    "subtitle": "프로그래밍 학습을 위한 실용적인 가이드",
+    "badge": "자체 콘텐츠",
+    "readingTime": "읽는 시간",
+    "minutes": "분",
+    "author": "작성자",
+    "publishedAt": "작성일",
+    "backToList": "가이드 목록으로",
+    "relatedBooks": "관련 도서 찾기",
+    "categories": {
+      "all": "전체",
+      "beginner": "입문",
+      "javascript": "JavaScript",
+      "python": "Python",
+      "backend": "백엔드",
+      "learning": "학습법"
+    }
   }
 }
