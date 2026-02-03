@@ -174,8 +174,8 @@ export function MindBooksContent({
               )}
             </div>
 
-            {/* Category Filter */}
-            <div className="flex items-center gap-2 flex-wrap justify-center">
+            {/* Category Filter - Hidden on mobile */}
+            {/* <div className="hidden md:flex items-center gap-2 flex-wrap justify-center">
               <Filter className="h-4 w-4 text-muted-foreground" />
               <Button
                 variant={selectedCategory === null ? "default" : "outline"}
@@ -197,7 +197,7 @@ export function MindBooksContent({
                   {cat.name}
                 </Button>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
