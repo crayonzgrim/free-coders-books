@@ -97,18 +97,34 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/categories"
+                  href="/guides"
                   className="text-muted-foreground hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                 >
-                  Categories
+                  Guides
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/bookmarks"
+                  href="/articles"
                   className="text-muted-foreground hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                 >
-                  Bookmarks
+                  Articles
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="text-muted-foreground hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                >
+                  {t("about")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/faq"
+                  className="text-muted-foreground hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                >
+                  FAQ
                 </Link>
               </li>
             </ul>
