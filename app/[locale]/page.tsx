@@ -169,7 +169,7 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
       </section>
 
       {/* Ad Section (300x250) */}
-      <div className="flex justify-center py-6 bg-gray-50/50 dark:bg-gray-900/50">
+      <div className="flex justify-center py-6">
         <KakaoAdFit unit="DAN-lawkB1KqkNnDh62T" width={300} height={250} />
       </div>
 
