@@ -61,7 +61,8 @@
     "feature3Title": "Actualizaciones Continuas",
     "feature3Description": "Contenido actualizado regularmente reflejando las últimas tendencias tecnológicas y métodos de aprendizaje",
     "ctaTitle": "¿Listo para empezar a aprender?",
-    "ctaDescription": "Mejora tus habilidades de programación con nuestras guías estructuradas y artículos para desarrolladores"
+    "ctaDescription": "Mejora tus habilidades de programación con nuestras guías estructuradas y artículos para desarrolladores",
+    "showMore": "Ver más"
   },
   "books": {
     "title": "Explorar libros",

@@ -61,7 +61,8 @@
     "feature3Title": "Continuous Updates",
     "feature3Description": "Regularly updated content reflecting the latest tech trends and learning methods",
     "ctaTitle": "Ready to start learning?",
-    "ctaDescription": "Level up your programming skills with our structured guides and developer articles"
+    "ctaDescription": "Level up your programming skills with our structured guides and developer articles",
+    "showMore": "Show more"
   },
   "books": {
     "title": "Browse Books",

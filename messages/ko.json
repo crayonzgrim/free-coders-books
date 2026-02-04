@@ -61,7 +61,8 @@
     "feature3Title": "지속적인 업데이트",
     "feature3Description": "최신 기술 트렌드와 학습 방법론을 반영하여 꾸준히 콘텐츠를 업데이트합니다",
     "ctaTitle": "학습을 시작할 준비가 되셨나요?",
-    "ctaDescription": "체계적인 학습 가이드와 개발자 아티클로 프로그래밍 실력을 향상시키세요"
+    "ctaDescription": "체계적인 학습 가이드와 개발자 아티클로 프로그래밍 실력을 향상시키세요",
+    "showMore": "더 보기"
   },
   "books": {
     "title": "도서 탐색",
