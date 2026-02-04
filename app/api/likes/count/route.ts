@@ -1,8 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isDbConfigured } from "@/lib/db";
+import { checkRateLimit, getClientIp, getRateLimitHeaders, rateLimiters } from "@/lib/rate-limit";
 
 // GET /api/likes/count?bookUrls=url1,url2,... - Get like counts for books
 export async function GET(request: NextRequest) {
+  // Rate limiting (stricter for heavy reads)
+  const ip = getClientIp(request);
+  const rateLimit = checkRateLimit(`likes:count:${ip}`, rateLimiters.heavyRead);
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      { error: "Too many requests" },
+      { status: 429, headers: getRateLimitHeaders(rateLimit) }
+    );
+  }
+
   const { searchParams } = new URL(request.url);
   const bookUrlsParam = searchParams.get("bookUrls");
 
@@ -47,8 +58,7 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json(countsMap);
-  } catch (error) {
-    console.error("Error fetching like counts:", error);
+  } catch {
     // Return zeros on error
     const countsMap: Record<string, number> = {};
     for (const url of bookUrls) {

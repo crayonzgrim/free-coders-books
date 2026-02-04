@@ -1,9 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { isDbConfigured } from "@/lib/db";
+import { checkRateLimit, getClientIp, getRateLimitHeaders, rateLimiters } from "@/lib/rate-limit";
+import { toggleLikeSchema, validateBody } from "@/lib/validations/api";
 
 // POST /api/likes - Toggle like
 export async function POST(request: NextRequest) {
+  // Rate limiting
+  const ip = getClientIp(request);
+  const rateLimit = checkRateLimit(`likes:write:${ip}`, rateLimiters.write);
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      { error: "Too many requests" },
+      { status: 429, headers: getRateLimitHeaders(rateLimit) }
+    );
+  }
+
   const session = await auth();
 
   if (!session?.user?.id) {
@@ -18,14 +30,15 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const { bookUrl } = await request.json();
-
-    if (!bookUrl) {
+    const validation = await validateBody(request, toggleLikeSchema);
+    if (!validation.success) {
       return NextResponse.json(
-        { error: "bookUrl is required" },
+        { error: validation.error },
         { status: 400 }
       );
     }
+
+    const { bookUrl } = validation.data;
 
     const { db, likes, likeCounts } = await import("@/lib/db");
     const { eq, and, sql } = await import("drizzle-orm");
@@ -101,8 +114,7 @@ export async function POST(request: NextRequest) {
         count: updatedCount?.count || 1,
       });
     }
-  } catch (error) {
-    console.error("Error toggling like:", error);
+  } catch {
     return NextResponse.json(
       { error: "Failed to toggle like" },
       { status: 500 }
@@ -111,7 +123,17 @@ export async function POST(request: NextRequest) {
 }
 
 // GET /api/likes - Get user's liked books
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // Rate limiting
+  const ip = getClientIp(request);
+  const rateLimit = checkRateLimit(`likes:get:${ip}`, rateLimiters.api);
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      { error: "Too many requests" },
+      { status: 429, headers: getRateLimitHeaders(rateLimit) }
+    );
+  }
+
   const session = await auth();
 
   if (!session?.user?.id) {
@@ -132,8 +154,7 @@ export async function GET() {
       .where(eq(likes.userId, session.user.id));
 
     return NextResponse.json(userLikes);
-  } catch (error) {
-    console.error("Error fetching likes:", error);
+  } catch {
     return NextResponse.json([], { status: 500 });
   }
 }
