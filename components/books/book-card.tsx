@@ -31,7 +31,15 @@ export function BookCard({
   const flag = getLanguageFlag(book.languageCode);
 
   return (
-    <Card className="group flex flex-col h-full hover-lift border border-gray-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-700 overflow-hidden">
+    <Card className="group relative flex flex-col h-full hover-lift border border-gray-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-700 overflow-hidden cursor-pointer">
+      {/* Full card clickable link */}
+      <a
+        href={book.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute inset-0 z-0"
+        aria-label={book.title}
+      />
       {/* Category Color Bar */}
       <div className={cn("h-1.5 w-full", colors.bg, colors.darkBg)} />
 
@@ -40,7 +48,7 @@ export function BookCard({
           <CardTitle className="text-base line-clamp-2 leading-snug group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
             {book.title}
           </CardTitle>
-          <div className="flex shrink-0 gap-1">
+          <div className="relative z-10 flex shrink-0 gap-1">
             {onToggleLike && (
               <Button
                 variant="ghost"
@@ -51,7 +59,10 @@ export function BookCard({
                     ? "text-red-500 hover:text-red-600"
                     : "text-muted-foreground hover:text-red-500"
                 )}
-                onClick={() => onToggleLike(book.url)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggleLike(book.url);
+                }}
                 aria-label={isLiked ? "Unlike" : "Like"}
               >
                 <Heart className={cn("h-4 w-4", isLiked && "fill-current")} />
@@ -67,7 +78,10 @@ export function BookCard({
                     ? "text-orange-500 hover:text-orange-600"
                     : "text-muted-foreground hover:text-orange-500"
                 )}
-                onClick={() => onToggleBookmark(book.url, book.title)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggleBookmark(book.url, book.title);
+                }}
                 aria-label={isBookmarked ? t("removeBookmark") : t("addBookmark")}
               >
                 {isBookmarked ? (
@@ -132,7 +146,7 @@ export function BookCard({
           href={book.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-medium text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 transition-colors group/link"
+          className="relative z-10 inline-flex items-center gap-2 text-sm font-medium text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 transition-colors group/link"
         >
           {t("readNow")}
           <ExternalLink className="h-4 w-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
