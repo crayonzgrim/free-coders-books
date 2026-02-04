@@ -27,8 +27,8 @@ export function Footer() {
           const data = await res.json();
           setStats(data);
         }
-      } catch (error) {
-        console.error("Error fetching visit stats:", error);
+      } catch {
+        // Silent fail - stats are optional
       }
     };
 

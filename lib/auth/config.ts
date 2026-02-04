@@ -29,7 +29,6 @@ export const authConfig: NextAuthConfig = {
 
       // Skip database operations if not configured
       if (!isDbConfigured()) {
-        console.warn("Database not configured - skipping user creation");
         return true;
       }
 
@@ -56,8 +55,7 @@ export const authConfig: NextAuthConfig = {
         }
 
         return true;
-      } catch (error) {
-        console.error("Error during sign in:", error);
+      } catch {
         // Allow sign-in even if DB fails - user data just won't be persisted
         return true;
       }
@@ -81,8 +79,8 @@ export const authConfig: NextAuthConfig = {
               token.provider = account.provider;
               return token;
             }
-          } catch (error) {
-            console.error("Error fetching user from DB:", error);
+          } catch {
+            // Continue with fallback ID
           }
         }
 

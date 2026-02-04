@@ -67,8 +67,8 @@ export function BooksContent() {
             setLikeCounts(counts);
           }
         }
-      } catch (error) {
-        console.error("Error fetching books:", error);
+      } catch {
+        // Error handled by error boundary
       } finally {
         setIsLoading(false);
       }
@@ -97,8 +97,8 @@ export function BooksContent() {
           const likes = await likesRes.json();
           setLikedUrls(likes.map((l: { bookUrl: string }) => l.bookUrl));
         }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
+      } catch {
+        // Silent fail - user data optional
       }
     };
 
@@ -124,8 +124,8 @@ export function BooksContent() {
         });
         setBookmarkedUrls((prev) => [...prev, bookUrl]);
       }
-    } catch (error) {
-      console.error("Error toggling bookmark:", error);
+    } catch {
+      // Silent fail - bookmark toggle
     }
   };
 
@@ -148,8 +148,8 @@ export function BooksContent() {
         }
         setLikeCounts((prev) => ({ ...prev, [bookUrl]: count }));
       }
-    } catch (error) {
-      console.error("Error toggling like:", error);
+    } catch {
+      // Silent fail - like toggle
     }
   };
 

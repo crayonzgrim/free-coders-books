@@ -48,8 +48,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
       }))
     );
-  } catch (error) {
-    console.error("Failed to fetch categories for sitemap:", error);
+  } catch {
+    // Silent fail - sitemap will work without categories
   }
 
   // Dynamic language filter pages
@@ -64,8 +64,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.6,
       }))
     );
-  } catch (error) {
-    console.error("Failed to fetch languages for sitemap:", error);
+  } catch {
+    // Silent fail - sitemap will work without languages
   }
 
   return [...staticPages, ...categoryPages, ...languagePages];

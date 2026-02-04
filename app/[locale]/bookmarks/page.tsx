@@ -45,8 +45,8 @@ export default function BookmarksPage() {
           }));
           setBooks(bookObjects);
         }
-      } catch (error) {
-        console.error("Error fetching bookmarks:", error);
+      } catch {
+        // Silent fail - handled by empty state
       } finally {
         setIsLoading(false);
       }
@@ -65,8 +65,8 @@ export default function BookmarksPage() {
 
       setBooks((prev) => prev.filter((book) => book.url !== bookUrl));
       setBookmarks((prev) => prev.filter((b) => b.bookUrl !== bookUrl));
-    } catch (error) {
-      console.error("Error removing bookmark:", error);
+    } catch {
+      // Silent fail - bookmark removal
     }
   };
 
