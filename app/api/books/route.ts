@@ -1,16 +1,32 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAllBooks, getAllCategories, getAllLanguages } from "@/lib/books";
 import { filterBooks, paginateBooks } from "@/lib/books/utils";
+import { checkRateLimit, getClientIp, getRateLimitHeaders, rateLimiters } from "@/lib/rate-limit";
+import { getBooksQuerySchema, validateQuery } from "@/lib/validations/api";
 
 // GET /api/books - Get books with filtering and pagination
 export async function GET(request: NextRequest) {
+  // Rate limiting
+  const ip = getClientIp(request);
+  const rateLimit = checkRateLimit(`books:${ip}`, rateLimiters.api);
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      { error: "Too many requests" },
+      { status: 429, headers: getRateLimitHeaders(rateLimit) }
+    );
+  }
+
   const { searchParams } = new URL(request.url);
 
-  const search = searchParams.get("search") || "";
-  const category = searchParams.get("category") || "";
-  const language = searchParams.get("language") || "";
-  const page = parseInt(searchParams.get("page") || "1", 10);
-  const perPage = parseInt(searchParams.get("perPage") || "24", 10);
+  const validation = validateQuery(searchParams, getBooksQuerySchema);
+  if (!validation.success) {
+    return NextResponse.json(
+      { error: validation.error },
+      { status: 400 }
+    );
+  }
+
+  const { search, category, language, page, perPage } = validation.data;
 
   try {
     const allBooks = await getAllBooks();
@@ -40,8 +56,7 @@ export async function GET(request: NextRequest) {
         languages: languages.slice(0, 30), // Top 30 languages
       },
     });
-  } catch (error) {
-    console.error("Error fetching books:", error);
+  } catch {
     return NextResponse.json(
       { error: "Failed to fetch books" },
       { status: 500 }
