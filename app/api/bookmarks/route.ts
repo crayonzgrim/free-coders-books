@@ -1,9 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { isDbConfigured } from "@/lib/db";
+import { checkRateLimit, getClientIp, getRateLimitHeaders, rateLimiters } from "@/lib/rate-limit";
+import { createBookmarkSchema, validateBody } from "@/lib/validations/api";
 
 // GET /api/bookmarks - Get user's bookmarks
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // Rate limiting
+  const ip = getClientIp(request);
+  const rateLimit = checkRateLimit(`bookmarks:get:${ip}`, rateLimiters.api);
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      { error: "Too many requests" },
+      { status: 429, headers: getRateLimitHeaders(rateLimit) }
+    );
+  }
+
   const session = await auth();
 
   if (!session?.user?.id) {
@@ -24,14 +36,23 @@ export async function GET() {
       .where(eq(bookmarks.userId, session.user.id));
 
     return NextResponse.json(userBookmarks);
-  } catch (error) {
-    console.error("Error fetching bookmarks:", error);
+  } catch {
     return NextResponse.json([], { status: 500 });
   }
 }
 
 // POST /api/bookmarks - Add a bookmark
 export async function POST(request: NextRequest) {
+  // Rate limiting (stricter for write operations)
+  const ip = getClientIp(request);
+  const rateLimit = checkRateLimit(`bookmarks:write:${ip}`, rateLimiters.write);
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      { error: "Too many requests" },
+      { status: 429, headers: getRateLimitHeaders(rateLimit) }
+    );
+  }
+
   const session = await auth();
 
   if (!session?.user?.id) {
@@ -46,14 +67,15 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const { bookUrl, bookTitle } = await request.json();
-
-    if (!bookUrl || !bookTitle) {
+    const validation = await validateBody(request, createBookmarkSchema);
+    if (!validation.success) {
       return NextResponse.json(
-        { error: "bookUrl and bookTitle are required" },
+        { error: validation.error },
         { status: 400 }
       );
     }
+
+    const { bookUrl, bookTitle } = validation.data;
 
     const { db, bookmarks } = await import("@/lib/db");
     const { eq, and } = await import("drizzle-orm");
@@ -89,8 +111,7 @@ export async function POST(request: NextRequest) {
       .get();
 
     return NextResponse.json(newBookmark, { status: 201 });
-  } catch (error) {
-    console.error("Error creating bookmark:", error);
+  } catch {
     return NextResponse.json(
       { error: "Failed to create bookmark" },
       { status: 500 }
@@ -100,6 +121,16 @@ export async function POST(request: NextRequest) {
 
 // DELETE /api/bookmarks - Remove a bookmark
 export async function DELETE(request: NextRequest) {
+  // Rate limiting
+  const ip = getClientIp(request);
+  const rateLimit = checkRateLimit(`bookmarks:write:${ip}`, rateLimiters.write);
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      { error: "Too many requests" },
+      { status: 429, headers: getRateLimitHeaders(rateLimit) }
+    );
+  }
+
   const session = await auth();
 
   if (!session?.user?.id) {
@@ -137,8 +168,7 @@ export async function DELETE(request: NextRequest) {
       );
 
     return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("Error deleting bookmark:", error);
+  } catch {
     return NextResponse.json(
       { error: "Failed to delete bookmark" },
       { status: 500 }
