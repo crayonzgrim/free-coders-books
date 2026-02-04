@@ -1,8 +1,19 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { isDbConfigured } from "@/lib/db";
+import { checkRateLimit, getClientIp, getRateLimitHeaders, rateLimiters } from "@/lib/rate-limit";
 
 // POST /api/visits - Increment visit count
-export async function POST() {
+export async function POST(request: NextRequest) {
+  // Rate limiting (stricter - one visit per minute per IP)
+  const ip = getClientIp(request);
+  const rateLimit = checkRateLimit(`visits:${ip}`, { limit: 5, windowSeconds: 60 });
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      { error: "Too many requests" },
+      { status: 429, headers: getRateLimitHeaders(rateLimit) }
+    );
+  }
+
   if (!isDbConfigured()) {
     return NextResponse.json({ success: true, mock: true });
   }
@@ -34,14 +45,23 @@ export async function POST() {
     }
 
     return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("Error incrementing visit count:", error);
+  } catch {
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }
 
 // GET /api/visits - Get visit stats
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // Rate limiting
+  const ip = getClientIp(request);
+  const rateLimit = checkRateLimit(`visits:get:${ip}`, rateLimiters.api);
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      { error: "Too many requests" },
+      { status: 429, headers: getRateLimitHeaders(rateLimit) }
+    );
+  }
+
   if (!isDbConfigured()) {
     return NextResponse.json({ today: 0, total: 0, mock: true });
   }
@@ -67,8 +87,7 @@ export async function GET() {
       today: todayVisit?.count || 0,
       total: totalCount,
     });
-  } catch (error) {
-    console.error("Error fetching visit stats:", error);
+  } catch {
     return NextResponse.json({ today: 0, total: 0 }, { status: 500 });
   }
 }
