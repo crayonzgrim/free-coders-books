@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 import { BookList } from "@/components/books/book-list";
+import { useRecentlyViewed } from "@/lib/hooks/use-recently-viewed";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Select } from "@/components/ui/select";
@@ -27,17 +28,14 @@ interface CategoryContentProps {
 
 export function CategoryContent({ slug, categoryName }: CategoryContentProps) {
   const t = useTranslations("categories");
-  // NOTE: Authentication disabled
-  const session = null as { user?: { id: string } } | null;
 
   const [data, setData] = useState<BooksResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [language, setLanguage] = useState<string>("");
   const [availableLanguages, setAvailableLanguages] = useState<{ code: string; name: string; count: number }[]>([]);
-  const [bookmarkedUrls, setBookmarkedUrls] = useState<string[]>([]);
-  const [likedUrls, setLikedUrls] = useState<string[]>([]);
   const [likeCounts, setLikeCounts] = useState<Record<string, number>>({});
+  const { addBook } = useRecentlyViewed();
 
   // Fetch available languages on mount
   useEffect(() => {
@@ -97,82 +95,6 @@ export function CategoryContent({ slug, categoryName }: CategoryContentProps) {
     setPage(1);
   };
 
-  // Fetch user's bookmarks and likes
-  useEffect(() => {
-    const fetchUserData = async () => {
-      if (!session?.user) return;
-
-      try {
-        const [bookmarksRes, likesRes] = await Promise.all([
-          fetch("/api/bookmarks"),
-          fetch("/api/likes"),
-        ]);
-
-        if (bookmarksRes.ok) {
-          const bookmarks = await bookmarksRes.json();
-          setBookmarkedUrls(bookmarks.map((b: { bookUrl: string }) => b.bookUrl));
-        }
-
-        if (likesRes.ok) {
-          const likes = await likesRes.json();
-          setLikedUrls(likes.map((l: { bookUrl: string }) => l.bookUrl));
-        }
-      } catch {
-        // Silent fail - user data optional
-      }
-    };
-
-    fetchUserData();
-  }, [session]);
-
-  const handleToggleBookmark = async (bookUrl: string, bookTitle: string) => {
-    if (!session?.user) return;
-
-    const isBookmarked = bookmarkedUrls.includes(bookUrl);
-
-    try {
-      if (isBookmarked) {
-        await fetch(`/api/bookmarks?bookUrl=${encodeURIComponent(bookUrl)}`, {
-          method: "DELETE",
-        });
-        setBookmarkedUrls((prev) => prev.filter((url) => url !== bookUrl));
-      } else {
-        await fetch("/api/bookmarks", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ bookUrl, bookTitle }),
-        });
-        setBookmarkedUrls((prev) => [...prev, bookUrl]);
-      }
-    } catch {
-      // Silent fail - bookmark toggle
-    }
-  };
-
-  const handleToggleLike = async (bookUrl: string) => {
-    if (!session?.user) return;
-
-    try {
-      const res = await fetch("/api/likes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ bookUrl }),
-      });
-
-      if (res.ok) {
-        const { liked, count } = await res.json();
-        if (liked) {
-          setLikedUrls((prev) => [...prev, bookUrl]);
-        } else {
-          setLikedUrls((prev) => prev.filter((url) => url !== bookUrl));
-        }
-        setLikeCounts((prev) => ({ ...prev, [bookUrl]: count }));
-      }
-    } catch {
-      // Silent fail - like toggle
-    }
-  };
-
   // Use the category name from data if available, otherwise use the prop
   const displayName = data?.books?.[0]?.category || categoryName;
 
@@ -189,7 +111,7 @@ export function CategoryContent({ slug, categoryName }: CategoryContentProps) {
             Back to Categories
           </Link>
           <div className="flex items-center gap-3 mb-3">
-            <div className="p-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500">
+            <div className="p-2 rounded-xl bg-linear-to-r from-orange-500 to-amber-500">
               <Layers className="h-6 w-6 text-white" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold">{displayName}</h1>
@@ -247,11 +169,8 @@ export function CategoryContent({ slug, categoryName }: CategoryContentProps) {
         <BookList
           books={data?.books || []}
           isLoading={isLoading}
-          bookmarkedUrls={bookmarkedUrls}
-          likedUrls={likedUrls}
           likeCounts={likeCounts}
-          onToggleBookmark={session ? handleToggleBookmark : undefined}
-          onToggleLike={session ? handleToggleLike : undefined}
+          onView={addBook}
         />
 
         {/* Pagination */}
