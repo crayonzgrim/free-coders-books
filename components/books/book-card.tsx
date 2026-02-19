@@ -15,6 +15,7 @@ interface BookCardProps {
   likeCount?: number;
   onToggleBookmark?: (bookUrl: string, bookTitle: string) => void;
   onToggleLike?: (bookUrl: string) => void;
+  onView?: (book: Book) => void;
 }
 
 export function BookCard({
@@ -24,6 +25,7 @@ export function BookCard({
   likeCount = 0,
   onToggleBookmark,
   onToggleLike,
+  onView,
 }: BookCardProps) {
   const t = useTranslations("books");
 
@@ -39,6 +41,7 @@ export function BookCard({
         rel="noopener noreferrer"
         className="absolute inset-0 z-0"
         aria-label={book.title}
+        onClick={() => onView?.(book)}
       />
       {/* Category Color Bar */}
       <div className={cn("h-1.5 w-full", colors.bg, colors.darkBg)} />

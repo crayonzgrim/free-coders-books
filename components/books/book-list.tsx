@@ -13,6 +13,7 @@ interface BookListProps {
   likeCounts?: Record<string, number>;
   onToggleBookmark?: (bookUrl: string, bookTitle: string) => void;
   onToggleLike?: (bookUrl: string) => void;
+  onView?: (book: Book) => void;
 }
 
 export function BookList({
@@ -23,6 +24,7 @@ export function BookList({
   likeCounts = {},
   onToggleBookmark,
   onToggleLike,
+  onView,
 }: BookListProps) {
   const t = useTranslations("common");
 
@@ -55,6 +57,7 @@ export function BookList({
           likeCount={likeCounts[book.url] || 0}
           onToggleBookmark={onToggleBookmark}
           onToggleLike={onToggleLike}
+          onView={onView}
         />
       ))}
     </div>
