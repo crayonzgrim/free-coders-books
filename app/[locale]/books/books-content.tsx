@@ -1,12 +1,12 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useEffect, useMemo } from "react";
-import { useSearchParams } from "next/navigation";
-// NOTE: Authentication disabled - useSession removed
-// import { useSession } from "next-auth/react";
+import { useState, useEffect, useMemo, useRef } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { BookList } from "@/components/books/book-list";
 import { BookFilters } from "@/components/books/book-filters";
+import { RecentlyViewedSection } from "@/components/books/recently-viewed";
+import { useRecentlyViewed } from "@/lib/hooks/use-recently-viewed";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Filter, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Book } from "@/lib/books/types";
@@ -27,28 +27,52 @@ interface BooksResponse {
 
 export function BooksContent() {
   const t = useTranslations("books");
-  // NOTE: Authentication disabled
-  const session = null as { user?: { id: string } } | null;
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
 
   // Initialize state from URL params
   const [search, setSearch] = useState(searchParams.get("search") || "");
+  const [debouncedSearch, setDebouncedSearch] = useState(search);
   const [category, setCategory] = useState(searchParams.get("category") || "");
   const [language, setLanguage] = useState(searchParams.get("lang") || "");
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(Number(searchParams.get("page")) || 1);
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<BooksResponse | null>(null);
-  const [bookmarkedUrls, setBookmarkedUrls] = useState<string[]>([]);
-  const [likedUrls, setLikedUrls] = useState<string[]>([]);
   const [likeCounts, setLikeCounts] = useState<Record<string, number>>({});
+  const { recentBooks, addBook, clearHistory } = useRecentlyViewed();
 
-  // Fetch books
+  // Debounce search input (300ms)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  // Sync state to URL params
+  const isInitialMount = useRef(true);
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    const params = new URLSearchParams();
+    if (debouncedSearch) params.set("search", debouncedSearch);
+    if (category) params.set("category", category);
+    if (language) params.set("lang", language);
+    if (page > 1) params.set("page", page.toString());
+    const qs = params.toString();
+    router.replace(`${pathname}${qs ? `?${qs}` : ""}`, { scroll: false });
+  }, [debouncedSearch, category, language, page, pathname, router]);
+
+  // Fetch books (uses debounced search)
   useEffect(() => {
     const fetchBooks = async () => {
       setIsLoading(true);
       try {
         const params = new URLSearchParams();
-        if (search) params.set("search", search);
+        if (debouncedSearch) params.set("search", debouncedSearch);
         if (category) params.set("category", category);
         if (language) params.set("language", language);
         params.set("page", page.toString());
@@ -75,83 +99,7 @@ export function BooksContent() {
     };
 
     fetchBooks();
-  }, [search, category, language, page]);
-
-  // Fetch user's bookmarks and likes
-  useEffect(() => {
-    const fetchUserData = async () => {
-      if (!session?.user) return;
-
-      try {
-        const [bookmarksRes, likesRes] = await Promise.all([
-          fetch("/api/bookmarks"),
-          fetch("/api/likes"),
-        ]);
-
-        if (bookmarksRes.ok) {
-          const bookmarks = await bookmarksRes.json();
-          setBookmarkedUrls(bookmarks.map((b: { bookUrl: string }) => b.bookUrl));
-        }
-
-        if (likesRes.ok) {
-          const likes = await likesRes.json();
-          setLikedUrls(likes.map((l: { bookUrl: string }) => l.bookUrl));
-        }
-      } catch {
-        // Silent fail - user data optional
-      }
-    };
-
-    fetchUserData();
-  }, [session]);
-
-  const handleToggleBookmark = async (bookUrl: string, bookTitle: string) => {
-    if (!session?.user) return;
-
-    const isBookmarked = bookmarkedUrls.includes(bookUrl);
-
-    try {
-      if (isBookmarked) {
-        await fetch(`/api/bookmarks?bookUrl=${encodeURIComponent(bookUrl)}`, {
-          method: "DELETE",
-        });
-        setBookmarkedUrls((prev) => prev.filter((url) => url !== bookUrl));
-      } else {
-        await fetch("/api/bookmarks", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ bookUrl, bookTitle }),
-        });
-        setBookmarkedUrls((prev) => [...prev, bookUrl]);
-      }
-    } catch {
-      // Silent fail - bookmark toggle
-    }
-  };
-
-  const handleToggleLike = async (bookUrl: string) => {
-    if (!session?.user) return;
-
-    try {
-      const res = await fetch("/api/likes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ bookUrl }),
-      });
-
-      if (res.ok) {
-        const { liked, count } = await res.json();
-        if (liked) {
-          setLikedUrls((prev) => [...prev, bookUrl]);
-        } else {
-          setLikedUrls((prev) => prev.filter((url) => url !== bookUrl));
-        }
-        setLikeCounts((prev) => ({ ...prev, [bookUrl]: count }));
-      }
-    } catch {
-      // Silent fail - like toggle
-    }
-  };
+  }, [debouncedSearch, category, language, page]);
 
   const handleClearFilters = () => {
     setSearch("");
@@ -184,7 +132,7 @@ export function BooksContent() {
       <div className="border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 py-12">
           <div className="flex items-center gap-3 mb-3">
-            <div className="p-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500">
+            <div className="p-2 rounded-xl bg-linear-to-r from-orange-500 to-amber-500">
               <BookOpen className="h-6 w-6 text-white" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold">{t("title")}</h1>
@@ -194,8 +142,8 @@ export function BooksContent() {
       </div>
 
       <div className="container mx-auto px-4 py-8">
-        {/* Filters */}
-        <div className="mb-8 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
+        {/* Filters - sticky on mobile */}
+        <div className="mb-8 p-4 md:p-6 rounded-2xl border border-gray-200 dark:border-gray-700 sticky top-16 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
           <div className="flex items-center gap-2 mb-4">
             <Filter className="h-5 w-5 text-orange-500" />
             <h2 className="font-semibold">{t("filters")}</h2>
@@ -233,15 +181,15 @@ export function BooksContent() {
           </span>
         </div>
 
+        {/* Recently Viewed */}
+        <RecentlyViewedSection books={recentBooks} onClear={clearHistory} />
+
         {/* Book List */}
         <BookList
           books={data?.books || []}
           isLoading={isLoading}
-          bookmarkedUrls={bookmarkedUrls}
-          likedUrls={likedUrls}
           likeCounts={likeCounts}
-          onToggleBookmark={session ? handleToggleBookmark : undefined}
-          onToggleLike={session ? handleToggleLike : undefined}
+          onView={addBook}
         />
 
         {/* Pagination */}
