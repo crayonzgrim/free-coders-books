@@ -1,0 +1,405 @@
+{
+  "timestamp": "2026-02-18T13:29:56.953Z",
+  "reason": "compaction",
+  "status": {
+    "version": "2.0",
+    "lastUpdated": "2026-02-18T13:29:56.685Z",
+    "activeFeatures": [
+      "layout",
+      "home",
+      "[slug]",
+      "bookmarks",
+      "categories",
+      "books",
+      "mind-books",
+      "free-coders-books",
+      "seo",
+      "[locale]"
+    ],
+    "primaryFeature": "layout",
+    "features": {
+      "layout": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-18T07:56:08.963Z",
+          "lastUpdated": "2026-02-18T07:56:08.963Z"
+        },
+        "lastFile": "/Volumes/SSD/crayonzgrim-dev/project/free-coders-books/components/layout/footer.tsx"
+      },
+      "home": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-18T07:57:42.954Z",
+          "lastUpdated": "2026-02-18T07:57:43.085Z"
+        },
+        "lastFile": "/Volumes/SSD/crayonzgrim-dev/project/free-coders-books/components/home/language-selector.tsx"
+      },
+      "[slug]": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-18T07:57:43.217Z",
+          "lastUpdated": "2026-02-18T09:05:31.715Z"
+        },
+        "lastFile": "/Volumes/SSD/crayonzgrim-dev/project/free-coders-books/app/[locale]/categories/[slug]/category-content.tsx"
+      },
+      "bookmarks": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-18T07:57:43.348Z",
+          "lastUpdated": "2026-02-18T09:06:03.485Z"
+        },
+        "lastFile": "/Volumes/SSD/crayonzgrim-dev/project/free-coders-books/app/[locale]/bookmarks/page.tsx"
+      },
+      "categories": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-18T07:57:43.481Z",
+          "lastUpdated": "2026-02-18T08:09:43.890Z"
+        },
+        "lastFile": "/Volumes/SSD/crayonzgrim-dev/project/free-coders-books/app/[locale]/categories/page.tsx"
+      },
+      "books": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-18T07:57:43.616Z",
+          "lastUpdated": "2026-02-18T09:05:10.212Z"
+        },
+        "lastFile": "/Volumes/SSD/crayonzgrim-dev/project/free-coders-books/app/[locale]/books/books-content.tsx"
+      },
+      "mind-books": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-18T07:57:44.014Z",
+          "lastUpdated": "2026-02-18T08:09:47.054Z"
+        },
+        "lastFile": "/Volumes/SSD/crayonzgrim-dev/project/free-coders-books/app/[locale]/mind-books/page.tsx"
+      },
+      "free-coders-books": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-18T07:57:55.803Z",
+          "lastUpdated": "2026-02-18T13:29:56.685Z"
+        },
+        "lastFile": "/Volumes/SSD/crayonzgrim-dev/project/free-coders-books/lib/hooks/use-recently-viewed.ts"
+      },
+      "seo": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-18T07:58:08.294Z",
+          "lastUpdated": "2026-02-18T07:58:08.294Z"
+        },
+        "lastFile": "/Volumes/SSD/crayonzgrim-dev/project/free-coders-books/components/seo/json-ld.tsx"
+      },
+      "[locale]": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-18T08:10:47.818Z",
+          "lastUpdated": "2026-02-18T08:11:06.760Z"
+        },
+        "lastFile": "/Volumes/SSD/crayonzgrim-dev/project/free-coders-books/app/[locale]/page.tsx"
+      }
+    },
+    "pipeline": {
+      "currentPhase": 1,
+      "level": "Dynamic",
+      "phaseHistory": []
+    },
+    "session": {
+      "startedAt": "2026-02-18T01:24:01.109Z",
+      "onboardingCompleted": false,
+      "lastActivity": "2026-02-18T13:29:56.685Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-02-18T07:56:08.963Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:57:42.954Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:57:43.085Z",
+        "feature": "home",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:57:43.217Z",
+        "feature": "[slug]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:57:43.348Z",
+        "feature": "bookmarks",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:57:43.481Z",
+        "feature": "categories",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:57:43.616Z",
+        "feature": "books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:57:43.746Z",
+        "feature": "books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:57:43.877Z",
+        "feature": "books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:57:44.014Z",
+        "feature": "mind-books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:57:44.150Z",
+        "feature": "mind-books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:57:55.803Z",
+        "feature": "free-coders-books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:57:59.959Z",
+        "feature": "free-coders-books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:58:05.370Z",
+        "feature": "free-coders-books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:58:06.433Z",
+        "feature": "free-coders-books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T07:58:08.294Z",
+        "feature": "seo",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:05:51.722Z",
+        "feature": "books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:06:09.048Z",
+        "feature": "books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:06:27.872Z",
+        "feature": "[slug]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:06:41.654Z",
+        "feature": "books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:09:40.717Z",
+        "feature": "books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:09:43.890Z",
+        "feature": "categories",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:09:47.054Z",
+        "feature": "mind-books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:10:47.818Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:10:53.025Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:10:57.923Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:11:02.263Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:11:04.905Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:11:06.760Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:11:46.869Z",
+        "feature": "free-coders-books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T08:11:54.357Z",
+        "feature": "free-coders-books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T09:04:43.319Z",
+        "feature": "books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T09:04:54.480Z",
+        "feature": "books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T09:05:05.022Z",
+        "feature": "books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T09:05:10.212Z",
+        "feature": "books",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T09:05:18.412Z",
+        "feature": "[slug]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T09:05:26.998Z",
+        "feature": "[slug]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T09:05:31.715Z",
+        "feature": "[slug]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T09:06:03.485Z",
+        "feature": "bookmarks",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T13:29:56.685Z",
+        "feature": "free-coders-books",
+        "phase": "do",
+        "action": "updated"
+      }
+    ]
+  }
+}
