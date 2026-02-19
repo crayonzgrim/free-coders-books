@@ -28,7 +28,7 @@ export function WebsiteJsonLd() {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${siteUrl}/en/books?query={search_term_string}`,
+        urlTemplate: `${siteUrl}/en/books?search={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },
