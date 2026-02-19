@@ -61,8 +61,18 @@
     "feature3Title": "Continuous Updates",
     "feature3Description": "Regularly updated content reflecting the latest tech trends and learning methods",
     "ctaTitle": "Ready to start learning?",
-    "ctaDescription": "Level up your programming skills with our structured guides and developer articles",
-    "showMore": "Show more"
+    "ctaDescription": "Browse through our extensive collection of free programming resources and level up your skills today.",
+    "showMore": "Show more",
+    "categoriesDescription": "Explore our most popular programming topics",
+    "communityTitle": "Powered by the Community",
+    "communityDescription": "All resources are curated from the amazing open-source project, one of the most starred repositories on GitHub with 300k+ stars —",
+    "featureAlwaysFree": "Always Free",
+    "featureAlwaysFreeDesc": "Every resource is completely free and open to everyone",
+    "featureMultiLang": "Multi-language",
+    "featureMultiLangDesc": "Resources available in 40+ languages worldwide",
+    "featureUpdatedDaily": "Updated Daily",
+    "featureUpdatedDailyDesc": "New resources added and verified by contributors",
+    "exploreCategories": "Explore Categories"
   },
   "books": {
     "title": "Browse Books",
@@ -82,7 +92,9 @@
     "viewDetails": "View Details",
     "readNow": "Read Now",
     "addBookmark": "Add to Bookmarks",
-    "removeBookmark": "Remove from Bookmarks"
+    "removeBookmark": "Remove from Bookmarks",
+    "recentlyViewed": "Recently Viewed",
+    "clearHistory": "Clear"
   },
   "categories": {
     "title": "Categories",

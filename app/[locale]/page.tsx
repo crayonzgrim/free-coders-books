@@ -114,8 +114,8 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
         <KakaoAdFit unit="DAN-lawkB1KqkNnDh62T" width={300} height={250} />
       </div>
 
-      {/* Learning Guides Section - 자체 콘텐츠 (광고 통과용 임시 - 주석처리) */}
-      {/* <section className="py-16 md:py-24 bg-linear-to-b from-emerald-50/50 to-transparent dark:from-emerald-950/20">
+      {/* Learning Guides Section */}
+      <section className="py-16 md:py-24 bg-linear-to-b from-emerald-50/50 to-transparent dark:from-emerald-950/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-10">
             <div>
@@ -170,10 +170,10 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
-      {/* Articles Section - 자체 콘텐츠 (광고 통과용 임시 - 주석처리) */}
-      {/* <section className="py-16 md:py-24 bg-linear-to-b from-rose-50/50 to-transparent dark:from-rose-950/20">
+      {/* Articles Section */}
+      <section className="py-16 md:py-24 bg-linear-to-b from-rose-50/50 to-transparent dark:from-rose-950/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-10">
             <div>
@@ -228,7 +228,7 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Language Selector */}
       <LanguageSelector
@@ -305,7 +305,7 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
               {t("featuredCategories")}
             </h2>
             <p className="text-muted-foreground mt-1">
-              Explore our most popular programming topics
+              {t("categoriesDescription")}
             </p>
           </div>
 
@@ -322,10 +322,10 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
                 <Users className="h-8 w-8 text-white" />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                Powered by the Community
+                {t("communityTitle")}
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                All resources are curated from the amazing{" "}
+                {t("communityDescription")}{" "}
                 <a
                   href="https://github.com/EbookFoundation/free-programming-books"
                   target="_blank"
@@ -333,8 +333,7 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
                   className="text-orange-600 dark:text-orange-400 hover:underline font-medium"
                 >
                   free-programming-books
-                </a>{" "}
-                project, one of the most starred repositories on GitHub with 300k+ stars.
+                </a>
               </p>
             </div>
 
@@ -342,18 +341,18 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 {
-                  title: "Always Free",
-                  description: "Every resource is completely free and open to everyone",
+                  title: t("featureAlwaysFree"),
+                  description: t("featureAlwaysFreeDesc"),
                   icon: "🆓",
                 },
                 {
-                  title: "Multi-language",
-                  description: "Resources available in 40+ languages worldwide",
+                  title: t("featureMultiLang"),
+                  description: t("featureMultiLangDesc"),
                   icon: "🌍",
                 },
                 {
-                  title: "Updated Daily",
-                  description: "New resources added and verified by contributors",
+                  title: t("featureUpdatedDaily"),
+                  description: t("featureUpdatedDailyDesc"),
                   icon: "✨",
                 },
               ].map((feature) => (
@@ -378,11 +377,10 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-2xl mx-auto">
             <h2 className="text-2xl md:text-4xl font-bold mb-4">
-              Ready to start learning?
+              {t("ctaTitle")}
             </h2>
             <p className="text-muted-foreground mb-8 text-lg">
-              Browse through our extensive collection of free programming resources
-              and level up your skills today.
+              {t("ctaDescription")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/books">
@@ -393,7 +391,7 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
               </Link>
               <Link href="/categories">
                 <Button size="lg" variant="outline" className="gap-2 w-full sm:w-auto">
-                  Explore Categories
+                  {t("exploreCategories")}
                 </Button>
               </Link>
             </div>

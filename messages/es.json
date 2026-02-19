@@ -61,8 +61,18 @@
     "feature3Title": "Actualizaciones Continuas",
     "feature3Description": "Contenido actualizado regularmente reflejando las últimas tendencias tecnológicas y métodos de aprendizaje",
     "ctaTitle": "¿Listo para empezar a aprender?",
-    "ctaDescription": "Mejora tus habilidades de programación con nuestras guías estructuradas y artículos para desarrolladores",
-    "showMore": "Ver más"
+    "ctaDescription": "Explora nuestra extensa colección de recursos de programación gratuitos y mejora tus habilidades hoy.",
+    "showMore": "Ver más",
+    "categoriesDescription": "Explora nuestros temas de programación más populares",
+    "communityTitle": "Impulsado por la Comunidad",
+    "communityDescription": "Todos los recursos provienen del increíble proyecto de código abierto, uno de los más destacados en GitHub con más de 300k estrellas —",
+    "featureAlwaysFree": "Siempre Gratis",
+    "featureAlwaysFreeDesc": "Todos los recursos son completamente gratuitos y abiertos para todos",
+    "featureMultiLang": "Multilingüe",
+    "featureMultiLangDesc": "Recursos disponibles en más de 40 idiomas en todo el mundo",
+    "featureUpdatedDaily": "Actualizado Diariamente",
+    "featureUpdatedDailyDesc": "Nuevos recursos añadidos y verificados por colaboradores",
+    "exploreCategories": "Explorar Categorías"
   },
   "books": {
     "title": "Explorar libros",
@@ -82,7 +92,9 @@
     "viewDetails": "Ver detalles",
     "readNow": "Leer ahora",
     "addBookmark": "Agregar a marcadores",
-    "removeBookmark": "Quitar de marcadores"
+    "removeBookmark": "Quitar de marcadores",
+    "recentlyViewed": "Vistos recientemente",
+    "clearHistory": "Borrar"
   },
   "categories": {
     "title": "Categorías",

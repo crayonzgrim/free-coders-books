@@ -61,8 +61,18 @@
     "feature3Title": "지속적인 업데이트",
     "feature3Description": "최신 기술 트렌드와 학습 방법론을 반영하여 꾸준히 콘텐츠를 업데이트합니다",
     "ctaTitle": "학습을 시작할 준비가 되셨나요?",
-    "ctaDescription": "체계적인 학습 가이드와 개발자 아티클로 프로그래밍 실력을 향상시키세요",
-    "showMore": "더 보기"
+    "ctaDescription": "무료 프로그래밍 리소스 컬렉션을 탐색하고 오늘 바로 실력을 향상시키세요.",
+    "showMore": "더 보기",
+    "categoriesDescription": "가장 인기 있는 프로그래밍 주제를 탐색하세요",
+    "communityTitle": "커뮤니티의 힘으로",
+    "communityDescription": "모든 리소스는 GitHub에서 300k+ 스타를 받은 오픈소스 프로젝트에서 큐레이션됩니다 —",
+    "featureAlwaysFree": "항상 무료",
+    "featureAlwaysFreeDesc": "모든 리소스가 완전히 무료이며 누구에게나 열려 있습니다",
+    "featureMultiLang": "다국어 지원",
+    "featureMultiLangDesc": "전 세계 40개 이상의 언어로 리소스 제공",
+    "featureUpdatedDaily": "매일 업데이트",
+    "featureUpdatedDailyDesc": "기여자들이 새로운 리소스를 추가하고 검증합니다",
+    "exploreCategories": "카테고리 탐색"
   },
   "books": {
     "title": "도서 탐색",
@@ -82,7 +92,9 @@
     "viewDetails": "상세 보기",
     "readNow": "지금 읽기",
     "addBookmark": "북마크에 추가",
-    "removeBookmark": "북마크에서 제거"
+    "removeBookmark": "북마크에서 제거",
+    "recentlyViewed": "최근 본 도서",
+    "clearHistory": "지우기"
   },
   "categories": {
     "title": "카테고리",
