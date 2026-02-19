@@ -42,10 +42,10 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4 md:col-span-2">
             <Link href="/" className="flex items-center gap-2">
-              <div className="bg-gradient-to-r from-orange-500 to-amber-500 p-2 rounded-lg">
+              <div className="bg-linear-to-r from-orange-500 to-amber-500 p-2 rounded-lg">
                 <BookOpen className="h-5 w-5 text-white" />
               </div>
-              <span className="font-bold text-lg bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+              <span className="font-bold text-lg bg-linear-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
                 Free Coders Books
               </span>
             </Link>

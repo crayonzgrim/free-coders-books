@@ -60,10 +60,10 @@ interface LanguageSelectorProps {
 
 export function LanguageSelector({ title, subtitle }: LanguageSelectorProps) {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-orange-50/50 to-transparent dark:from-orange-950/20 dark:to-transparent">
+    <section className="py-16 md:py-24 bg-linear-to-b from-orange-50/50 to-transparent dark:from-orange-950/20 dark:to-transparent">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 mb-4">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-linear-to-r from-orange-500 to-amber-500 mb-4">
             <Globe className="h-7 w-7 text-white" />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold mb-2">{title}</h2>

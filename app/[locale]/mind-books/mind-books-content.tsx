@@ -121,7 +121,7 @@ export function MindBooksContent({
 
             {/* Title */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-purple-600 via-pink-500 to-indigo-500 bg-clip-text text-transparent">
                 {t("title")}
               </span>
             </h1>
@@ -204,7 +204,7 @@ export function MindBooksContent({
 
       {/* Top Rated Books */}
       {!selectedCategory && !searchQuery && (
-        <section className="py-12 bg-gradient-to-b from-purple-50/50 to-transparent dark:from-purple-950/20">
+        <section className="py-12 bg-linear-to-b from-purple-50/50 to-transparent dark:from-purple-950/20">
           <div className="container mx-auto px-4">
             <div className="flex items-center gap-2 mb-6">
               <Sparkles className="h-5 w-5 text-purple-600" />

@@ -64,7 +64,7 @@ export function CategoriesContent({ categories }: CategoriesContentProps) {
       <div className="border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 py-12">
           <div className="flex items-center gap-3 mb-3">
-            <div className="p-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500">
+            <div className="p-2 rounded-xl bg-linear-to-r from-orange-500 to-amber-500">
               <Layers className="h-6 w-6 text-white" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold">{t("title")}</h1>

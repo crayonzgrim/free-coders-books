@@ -62,7 +62,7 @@ export function SearchBar({ size = "default", className }: SearchBarProps) {
           type="submit"
           size={isLarge ? "lg" : "default"}
           className={cn(
-            "bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white shadow-none",
+            "bg-linear-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white shadow-none",
             isLarge ? "h-12 px-6 rounded-xl" : "h-9 px-4 rounded-lg"
           )}
         >
