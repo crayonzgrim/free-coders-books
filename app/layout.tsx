@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { getLocale } from "next-intl/server";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import {
   WebsiteJsonLd,
@@ -82,7 +83,7 @@ export const metadata: Metadata = {
       "Discover thousands of free programming books, courses, and resources in 50+ languages. Built for developers, by the community.",
     images: [
       {
-        url: `${siteUrl}/og-image.png`,
+        url: `${siteUrl}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Free Coders Books - Free Programming Resources",
@@ -94,7 +95,7 @@ export const metadata: Metadata = {
     title: "Free Coders Books - Free Programming Resources",
     description:
       "Discover thousands of free programming books in 50+ languages. Built for developers, by the community.",
-    images: [`${siteUrl}/og-image.png`],
+    images: [`${siteUrl}/opengraph-image`],
   },
   alternates: {
     canonical: siteUrl,
@@ -119,13 +120,15 @@ export const metadata: Metadata = {
   category: "Education",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <WebsiteJsonLd />
         <WebApplicationJsonLd />
