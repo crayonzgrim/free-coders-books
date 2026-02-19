@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { locales } from "@/lib/i18n/config";
 import { getAllCategories, getAllLanguages } from "@/lib/books/fetch-books";
+import { getAllGuides } from "@/lib/guides";
+import { getAllArticles } from "@/lib/articles";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl =
@@ -68,5 +70,60 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Silent fail - sitemap will work without languages
   }
 
-  return [...staticPages, ...categoryPages, ...languagePages];
+  // Guide pages
+  let guidePages: MetadataRoute.Sitemap = [];
+  try {
+    const guides = await getAllGuides();
+    guidePages = locales.flatMap((locale) =>
+      guides.map((guide) => ({
+        url: `${siteUrl}/${locale}/guides/${guide.slug}`,
+        lastModified,
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      }))
+    );
+  } catch {
+    // Silent fail
+  }
+
+  // Article pages
+  let articlePages: MetadataRoute.Sitemap = [];
+  try {
+    const articles = await getAllArticles();
+    articlePages = locales.flatMap((locale) =>
+      articles.map((article) => ({
+        url: `${siteUrl}/${locale}/articles/${article.slug}`,
+        lastModified,
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      }))
+    );
+  } catch {
+    // Silent fail
+  }
+
+  // Guides and articles listing pages
+  const contentListingPages = locales.flatMap((locale) => [
+    {
+      url: `${siteUrl}/${locale}/guides`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/${locale}/articles`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+  ]);
+
+  return [
+    ...staticPages,
+    ...contentListingPages,
+    ...categoryPages,
+    ...guidePages,
+    ...articlePages,
+    ...languagePages,
+  ];
 }
