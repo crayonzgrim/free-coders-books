@@ -7,14 +7,26 @@ interface CategoryPageProps {
   params: Promise<{ locale: string; slug: string }>;
 }
 
+async function getCategoryName(slug: string): Promise<string> {
+  try {
+    const categories = await getAllCategories();
+    const match = categories.find((c) => c.slug === slug);
+    if (match) return match.name;
+  } catch {
+    // Fall through to fallback
+  }
+  // Fallback: naive reconstruction
+  return decodeURIComponent(slug)
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const categoryName = decodeURIComponent(slug)
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+  const categoryName = await getCategoryName(slug);
 
   return <CategoryContent slug={slug} categoryName={categoryName} />;
 }
@@ -22,10 +34,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
 
-  const categoryName = decodeURIComponent(slug)
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+  const categoryName = await getCategoryName(slug);
 
   const isKorean = locale === "ko";
   const isSpanish = locale === "es";
