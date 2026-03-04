@@ -1,4 +1,3 @@
-import DOMPurify from "isomorphic-dompurify";
 import fs from "fs";
 import path from "path";
 import { marked } from "marked";
@@ -138,6 +137,7 @@ export async function getGuideBySlug(slug: string): Promise<Guide | null> {
 
   // Parse markdown to HTML and sanitize to prevent XSS
   const htmlContent = await marked(content);
+  const DOMPurify = (await import("isomorphic-dompurify")).default;
   const sanitizedContent = DOMPurify.sanitize(htmlContent);
 
   return {

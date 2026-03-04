@@ -1,4 +1,3 @@
-import DOMPurify from "isomorphic-dompurify";
 import fs from "fs";
 import path from "path";
 import { marked } from "marked";
@@ -132,6 +131,7 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
   const { frontmatter, content } = parseFrontmatter(fileContent);
 
   const htmlContent = await marked(content);
+  const DOMPurify = (await import("isomorphic-dompurify")).default;
   const sanitizedContent = DOMPurify.sanitize(htmlContent);
 
   return {
