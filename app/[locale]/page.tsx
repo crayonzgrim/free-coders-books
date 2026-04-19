@@ -16,11 +16,10 @@ import {
   Clock,
   ExternalLink,
   Globe,
-  GraduationCap,
   Newspaper,
   Sparkles,
   Star,
-  Users,
+  Users
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -115,62 +114,62 @@ function HomeContent({ categories, mindBooks, guides, articles }: HomeContentPro
       </div>
 
       {/* Learning Guides Section */}
-      <section className="py-16 md:py-24 bg-linear-to-b from-emerald-50/50 to-transparent dark:from-emerald-950/20">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between mb-10">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400 dark:border-emerald-600 px-3 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400 mb-3">
-                <GraduationCap className="h-3 w-3" />
-                <span>{t("guidesSubtitle")}</span>
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold">
-                <span className="bg-linear-to-r from-emerald-600 via-teal-500 to-cyan-500 bg-clip-text text-transparent">
-                  {t("guidesTitle")}
-                </span>
-              </h2>
-              <p className="text-muted-foreground mt-1">
-                {t("guidesDescription")}
-              </p>
-            </div>
-            <Link href="/guides">
-              <Button variant="outline" className="gap-2 border-emerald-300 hover:border-emerald-400 hover:bg-emerald-50 dark:border-emerald-700 dark:hover:border-emerald-600 dark:hover:bg-emerald-950/50">
-                {t("exploreGuides")}
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {guides.map((guide) => (
-              <Link
-                key={guide.slug}
-                href={`/guides/${guide.slug}`}
-                className="group"
-              >
-                <Card className="h-full hover:shadow-lg transition-all border-emerald-100 dark:border-emerald-900/30 hover:border-emerald-300 dark:hover:border-emerald-700">
-                  <CardContent className="p-5 space-y-3">
-                    <div className="flex items-start justify-between gap-2">
-                      <h3 className="font-semibold line-clamp-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                        {guide.title}
-                      </h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground line-clamp-2">{guide.description}</p>
-                    <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-1 text-muted-foreground">
-                        <Clock className="h-4 w-4" />
-                        <span>{guide.readingTime}{t("readingTimeUnit")}</span>
-                      </div>
-                      <span className="text-xs text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/30 px-2 py-1 rounded-full">
-                        {guide.category}
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* <section className="py-16 md:py-24 bg-linear-to-b from-emerald-50/50 to-transparent dark:from-emerald-950/20"> */}
+      {/*   <div className="container mx-auto px-4"> */}
+      {/*     <div className="flex items-center justify-between mb-10"> */}
+      {/*       <div> */}
+      {/*         <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400 dark:border-emerald-600 px-3 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400 mb-3"> */}
+      {/*           <GraduationCap className="h-3 w-3" /> */}
+      {/*           <span>{t("guidesSubtitle")}</span> */}
+      {/*         </div> */}
+      {/*         <h2 className="text-2xl md:text-3xl font-bold"> */}
+      {/*           <span className="bg-linear-to-r from-emerald-600 via-teal-500 to-cyan-500 bg-clip-text text-transparent"> */}
+      {/*             {t("guidesTitle")} */}
+      {/*           </span> */}
+      {/*         </h2> */}
+      {/*         <p className="text-muted-foreground mt-1"> */}
+      {/*           {t("guidesDescription")} */}
+      {/*         </p> */}
+      {/*       </div> */}
+      {/*       <Link href="/guides"> */}
+      {/*         <Button variant="outline" className="gap-2 border-emerald-300 hover:border-emerald-400 hover:bg-emerald-50 dark:border-emerald-700 dark:hover:border-emerald-600 dark:hover:bg-emerald-950/50"> */}
+      {/*           {t("exploreGuides")} */}
+      {/*           <ArrowRight className="h-4 w-4" /> */}
+      {/*         </Button> */}
+      {/*       </Link> */}
+      {/*     </div> */}
+      {/**/}
+      {/*     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"> */}
+      {/*       {guides.map((guide) => ( */}
+      {/*         <Link */}
+      {/*           key={guide.slug} */}
+      {/*           href={`/guides/${guide.slug}`} */}
+      {/*           className="group" */}
+      {/*         > */}
+      {/*           <Card className="h-full hover:shadow-lg transition-all border-emerald-100 dark:border-emerald-900/30 hover:border-emerald-300 dark:hover:border-emerald-700"> */}
+      {/*             <CardContent className="p-5 space-y-3"> */}
+      {/*               <div className="flex items-start justify-between gap-2"> */}
+      {/*                 <h3 className="font-semibold line-clamp-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors"> */}
+      {/*                   {guide.title} */}
+      {/*                 </h3> */}
+      {/*               </div> */}
+      {/*               <p className="text-sm text-muted-foreground line-clamp-2">{guide.description}</p> */}
+      {/*               <div className="flex items-center justify-between text-sm"> */}
+      {/*                 <div className="flex items-center gap-1 text-muted-foreground"> */}
+      {/*                   <Clock className="h-4 w-4" /> */}
+      {/*                   <span>{guide.readingTime}{t("readingTimeUnit")}</span> */}
+      {/*                 </div> */}
+      {/*                 <span className="text-xs text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/30 px-2 py-1 rounded-full"> */}
+      {/*                   {guide.category} */}
+      {/*                 </span> */}
+      {/*               </div> */}
+      {/*             </CardContent> */}
+      {/*           </Card> */}
+      {/*         </Link> */}
+      {/*       ))} */}
+      {/*     </div> */}
+      {/*   </div> */}
+      {/* </section> */}
 
       {/* Articles Section */}
       <section className="py-16 md:py-24 bg-linear-to-b from-rose-50/50 to-transparent dark:from-rose-950/20">
