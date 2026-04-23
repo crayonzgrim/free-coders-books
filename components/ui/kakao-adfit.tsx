@@ -51,7 +51,7 @@ export function KakaoAdFit({ unit, width, height, className }: KakaoAdFitProps) 
       {/* Next.js Script with lazyOnload for better performance */}
       {!isScriptLoaded && (
         <Script
-          src="//t1.daumcdn.net/kas/static/ba.min.js"
+          src="//t1.kakaocdn.net/kas/static/ba.min.js"
           strategy="lazyOnload"
           onLoad={handleScriptLoad}
           onError={() => {
